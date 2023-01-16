@@ -1,6 +1,39 @@
 import { createApp } from 'vue'
+import { createRouter, createWebHashHistory } from 'vue-router'
+import store from './store'
 import App from './App.vue'
+import HomePage from "@/components/pages/HomePage/index.vue";
+import DisplayBoardPage from "@/components/pages/DisplayBoardPage/index.vue";
+import EnterAdminPasswordPage from "@/components/pages/EnterAdminPasswordPage/index.vue";
+import AdminPage from "@/components/pages/AdminPage/index.vue";
 
-import './assets/main.css'
+const routes = [
+  { path: '/', component: HomePage },
+  { path: '/admin', component: AdminPage },
+  { path: '/admin/auth', component: EnterAdminPasswordPage },
+  { path: '/board', component: DisplayBoardPage },
+]
 
-createApp(App).mount('#app')
+const router = createRouter({
+  history: createWebHashHistory(),
+  routes,
+})
+
+router.beforeEach((to, from, next) => {
+  const adminPages = ['/admin'];
+  const authRequired = adminPages.includes(to.path);
+  const loggedIn = localStorage.getItem('authToken');
+
+  // trying to access a restricted page + not logged in
+  // redirect to login page
+  if (authRequired && !loggedIn) {
+    next('/admin/auth');
+  } else {
+    next();
+  }
+})
+
+createApp(App)
+    .use(router)
+    .use(store)
+    .mount('#app')
