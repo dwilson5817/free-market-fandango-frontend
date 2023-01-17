@@ -1,29 +1,13 @@
-# free-market-fandango-frontend
+# Free Market Fandango
 
-This template should help get you started developing with Vue 3 in Vite.
+A stock market themed party where drink choices and events affect prices.
 
-## Recommended IDE Setup
+## Frontend
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+The user interface for the application which users will interact with, written in Vue.js.  
 
-## Customize configuration
+The files are hosted on Amazon S3 behind a CloudFront distribution and are deployed using the CDK, see the [CDK project](https://gitlab.dylanwilson.dev/free-market-fandango/cdk) for more details.
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## License
 
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
+This application is licensed under version 3 of the GNU General Public License.  A copy of the license is available [on GitLab](https://gitlab.dylanwilson.dev/free-market-fandango/frontend/-/blob/main/LICENSE).
