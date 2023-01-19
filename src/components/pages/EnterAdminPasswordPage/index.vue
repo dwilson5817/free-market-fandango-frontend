@@ -13,7 +13,17 @@
                 <input v-model="password" type="password" class="form-control" id="inputAdminPassword" aria-describedby="adminPasswordHelp">
                 <div id="adminPasswordHelp" class="form-text">Enter the administrator password to continue.</div>
               </div>
-              <button type="submit" class="btn btn-primary">Continue</button>
+              <div class="d-inline-block position-relative" style="height: 2rem">
+                <Transition name="slide-left">
+                  <button v-if="loading" type="submit" class="btn btn-primary position-absolute d-flex flex-nowrap" disabled>
+                    <span class="spinner-border spinner-border-sm me-1 my-auto" role="status" aria-hidden="true"></span>
+                    Loading...
+                  </button>
+                  <button v-else type="submit" class="btn btn-primary position-absolute">
+                    Continue
+                  </button>
+                </Transition>
+              </div>
             </form>
           </div>
         </div>
@@ -66,5 +76,18 @@ export default {
 </script>
 
 <style scoped>
+.slide-left-enter-active,
+.slide-left-leave-active {
+  transition: all 0.2s ease-out;
+}
 
+.slide-left-enter-from {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.slide-left-leave-to {
+  opacity: 0;
+  transform: translateX(-20px);
+}
 </style>

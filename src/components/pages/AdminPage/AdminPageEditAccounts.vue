@@ -4,64 +4,38 @@
       Accounts
     </div>
     <div class="card-body">
-      <div v-if="message" class="alert alert-danger alert-dismissible fade show" role="alert">
-        {{ message }}
-        <button @click.prevent="message = null" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Card Number</th>
-            <th scope="col">Name</th>
-            <th scope="col">Balance</th>
-            <th scope="col">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-if="Object.keys(this.accounts).length === 0">
-            <th class="align-content-center text-center py-4" colspan="4">No accounts have been created yet!</th>
-          </tr>
-          <tr v-else v-for="(account, cardNumber) in this.accounts">
-            <th class="align-middle" scope="row"><span class="badge text-bg-primary font-monospace">{{ cardNumber }}</span></th>
-            <td class="align-middle">{{ account.fullName }}</td>
-            <td class="align-middle">{{ account.balance }}</td>
-            <td><button @click.prevent="deleteAccount(cardNumber)" class="btn btn-outline-danger">Delete</button></td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <th class="align-middle" scope="row">
-              <input v-model="account.cardNumber" type="number" class="form-control font-monospace" placeholder="Card Number" aria-label="Code">
-            </th>
-            <td class="align-middle">
-              <input v-model="account.name" type="text" class="form-control" placeholder="Name" aria-label="Name">
-            </td>
-            <td>
-              <input v-model="account.balance" type="number" class="form-control" placeholder="Opening Balance" aria-label="Price">
-            </td>
-            <td>
-              <button @click.prevent="createAccount" class="btn btn-outline-success" type="submit">Create</button>
-            </td>
-          </tr>
-        </tfoot>
-      </table>
+      <v-alert-message :message="errorMessage" v-on:close="errorMessage = null" type="danger"></v-alert-message>
+      <v-admin-page-table
+          name="account"
+          key-name="cardNumber"
+          :table="accounts"
+          :value-names="valueNames"
+          :creating="creating"
+          :loading="loading"
+          :clear-input="clearInput"
+          v-on:cleared="clearInput = false"
+          v-on:delete="deleteAccount"
+          v-on:create="createAccount"></v-admin-page-table>
     </div>
   </div>
 </template>
 
 <script>
 import AccountService from "@/services/account.service";
+import VAlertMessage from "@/components/VAlertMessage.vue";
+import VAdminPageTable from "@/components/VAdminPageTable.vue";
 
 export default {
   name: "AdminPageEditAccounts",
+  components: {VAdminPageTable, VAlertMessage},
     data() {
     return {
       accounts: {},
-      account: {
-        cardNumber: null,
-        name: null
-      },
-      message: null
+      valueNames: ['name', 'balance'],
+      errorMessage: null,
+      loading: true,
+      creating: false,
+      clearInput: false
     }
   },
   mounted() {
@@ -69,22 +43,28 @@ export default {
   },
   methods: {
     deleteAccount(cardNumber) {
+      this.accounts[cardNumber].deleting = true;
+
       AccountService.deleteAccount(cardNumber).then(
         response => {
           this.updateValues();
         },
         error => {
-          this.message =
+          this.errorMessage =
               (error.response &&
                   error.response.data &&
                   error.response.data.message) ||
               error.message ||
               error.toString();
+
+          delete this.accounts[cardNumber].deleting
         }
       );
     },
-    createAccount() {
-      AccountService.createAccount(this.account).then(
+    createAccount(newAccount) {
+      this.creating = true;
+
+      AccountService.createAccount(newAccount).then(
         response => {
           this.account = {
             cardNumber: null,
@@ -92,14 +72,18 @@ export default {
           }
 
           this.updateValues();
+          this.creating = false;
+          this.clearInput = true;
         },
         error => {
-            this.message =
-                (error.response &&
-                    error.response.data &&
-                    error.response.data.message) ||
-                error.message ||
-                error.toString();
+          this.errorMessage =
+              (error.response &&
+                  error.response.data &&
+                  error.response.data.message) ||
+              error.message ||
+              error.toString();
+
+          this.creating = false
         }
       );
     },
@@ -107,14 +91,17 @@ export default {
       AccountService.getAccounts().then(
         response => {
           this.accounts = response.data;
+          this.loading = false;
         },
         error => {
-          this.message =
+          this.errorMessage =
               (error.response &&
                   error.response.data &&
                   error.response.data.message) ||
               error.message ||
               error.toString();
+
+          this.loading = false;
         }
       )
     }

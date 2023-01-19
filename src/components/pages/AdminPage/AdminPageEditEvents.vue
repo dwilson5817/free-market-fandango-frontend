@@ -12,10 +12,7 @@
       </button>
     </div>
     <div class="card-body">
-      <div v-if="message" class="alert alert-danger alert-dismissible fade show" role="alert">
-        {{ message }}
-        <button @click.prevent="message = null" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
+      <v-alert-message :message="errorMessage" v-on:close="errorMessage = null" type="danger"></v-alert-message>
       <div v-if="Object.keys(this.events).length === 0" class="card text-bg-secondary">
         <div class="card-body">
           <h5 class="card-title">No Events Created Yet</h5>
@@ -24,7 +21,7 @@
       </div>
       <div v-else v-for="event in this.events" class="card mb-3">
         <div class="card-body">
-          <h5 class="card-title">{{ event.title }} {{ index }}</h5>
+          <h5 class="card-title">{{ event.title }}</h5>
           <h6 class="card-subtitle mb-2 text-muted">
             <span v-if="event.tags.length === 0" class="badge rounded-pill text-bg-danger me-1">No tags</span>
             <span v-else v-for="tag in event.tags" class="badge rounded-pill text-bg-warning me-1">{{ tag }}</span>
@@ -49,10 +46,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <div v-if="message" class="alert alert-danger alert-dismissible fade show" role="alert">
-            {{ message }}
-            <button @click.prevent="message = null" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
+          <v-alert-message :message="modalMessage" v-on:close="modalMessage = null" type="danger"></v-alert-message>
           <div class="form-floating mb-3">
             <input v-model="event.title" type="text" class="form-control" id="floatingInput" placeholder="Title">
             <label for="floatingInput">Title</label>
@@ -91,9 +85,11 @@
 
 <script>
 import EventService from "@/services/event.service";
+import VAlertMessage from "@/components/VAlertMessage.vue";
 
 export default {
   name: "AdminPageEditEvents",
+  components: {VAlertMessage},
   data() {
     return {
       events: {},
@@ -102,7 +98,7 @@ export default {
         body: null,
         tags: null
       },
-      message: null,
+      errorMessage: null,
       modalMessage: null
     }
   },
@@ -116,7 +112,7 @@ export default {
           this.updateValues();
         },
         error => {
-          this.message =
+          this.errorMessage =
               (error.response &&
                   error.response.data &&
                   error.response.data.message) ||
@@ -152,7 +148,7 @@ export default {
           this.events = response.data;
         },
         error => {
-          this.message =
+          this.errorMessage =
               (error.response &&
                   error.response.data &&
                   error.response.data.message) ||

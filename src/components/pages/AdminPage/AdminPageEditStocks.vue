@@ -4,74 +4,38 @@
       Stocks
     </div>
     <div class="card-body">
-      <div v-if="message" class="alert alert-danger alert-dismissible fade show" role="alert">
-        {{ message }}
-        <button @click.prevent="message = null" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Code</th>
-            <th scope="col">Full name</th>
-            <th scope="col">Current price</th>
-            <th scope="col">Tags</th>
-            <th scope="col">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-if="Object.keys(this.stocks).length === 0">
-            <th class="align-content-center text-center py-4" colspan="5">No stocks have been created yet!</th>
-          </tr>
-          <tr v-else v-for="(stockProps, stockName) in this.stocks">
-            <th class="align-middle" scope="row"><span class="badge text-bg-primary font-monospace">{{ stockName }}</span></th>
-            <td class="align-middle">{{ stockProps.fullName }}</td>
-            <td class="align-middle">{{ stockProps.currentPrice }}</td>
-            <td class="align-middle">
-              <span v-if="stockProps.tags.length === 0" class="badge rounded-pill text-bg-danger me-1">None</span>
-              <span v-else v-for="tag in stockProps.tags" class="badge rounded-pill text-bg-warning me-1">{{ tag }}</span>
-            </td>
-            <td><button @click.prevent="deleteStock(stockName)" class="btn btn-outline-danger">Delete</button></td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <th class="align-middle" scope="row">
-              <input v-model="stock.code" type="text" maxlength="4" class="form-control font-monospace" placeholder="Code" aria-label="Code">
-            </th>
-            <td class="align-middle">
-              <input v-model="stock.fullName" type="text" class="form-control" placeholder="Full Name" aria-label="Name">
-            </td>
-            <td>
-              <input v-model="stock.price" type="number" class="form-control" placeholder="Price" aria-label="Price">
-            </td>
-            <td>
-              <input v-model="stock.tags" type="text" class="form-control" placeholder="Tags" aria-label="Tags">
-            </td>
-            <td>
-              <button @click.prevent="createStock" class="btn btn-outline-success" type="submit">Create</button>
-            </td>
-          </tr>
-        </tfoot>
-      </table>
+      <v-alert-message :message="errorMessage" type="danger" v-on:close="errorMessage = null"></v-alert-message>
+      <v-admin-page-table
+          name="stock"
+          key-name="code"
+          :value-names="valueNames"
+          :creating="creating"
+          :loading="loading"
+          :table="stocks"
+          :clear-input="clearInput"
+          v-on:cleared="clearInput = false"
+          v-on:create="createStock"
+          v-on:delete="deleteStock"></v-admin-page-table>
     </div>
   </div>
 </template>
 
 <script>
 import StockService from "@/services/stock.service";
+import VAlertMessage from "@/components/VAlertMessage.vue";
+import VAdminPageTable from "@/components/VAdminPageTable.vue";
 
 export default {
   name: "AdminPageEditStocks",
+  components: {VAdminPageTable, VAlertMessage},
     data() {
     return {
       stocks: {},
-      stock: {
-        code: null,
-        fullName: null,
-        price: null,
-        tags: null
-      },
-      message: null
+      valueNames: ['fullName', 'currentPrice', 'tags'],
+      errorMessage: null,
+      creating: false,
+      loading: true,
+      clearInput: false
     }
   },
   mounted() {
@@ -79,22 +43,28 @@ export default {
   },
   methods: {
     deleteStock(stockCode) {
+      this.stocks[stockCode].deleting = true;
+
       StockService.deleteStock(stockCode).then(
         response => {
           this.updateValues();
         },
         error => {
-          this.message =
+          this.errorMessage =
               (error.response &&
                   error.response.data &&
                   error.response.data.message) ||
               error.message ||
               error.toString();
+
+          this.stocks[stockCode].deleting = false;
         }
       );
     },
-    createStock() {
-      StockService.createStock(this.stock).then(
+    createStock(newStock) {
+      this.creating = true;
+
+      StockService.createStock(newStock).then(
         response => {
           this.stock = {
             code: null,
@@ -103,14 +73,18 @@ export default {
           }
 
           this.updateValues();
+          this.creating = false;
+          this.clearInput = true;
         },
         error => {
-            this.message =
-                (error.response &&
-                    error.response.data &&
-                    error.response.data.message) ||
-                error.message ||
-                error.toString();
+          this.errorMessage =
+              (error.response &&
+                  error.response.data &&
+                  error.response.data.message) ||
+              error.message ||
+              error.toString();
+
+          this.creating = false;
         }
       );
     },
@@ -118,14 +92,17 @@ export default {
       StockService.getStocks().then(
         response => {
           this.stocks = response.data;
+          this.loading = false;
         },
         error => {
-          this.message =
+          this.errorMessage =
               (error.response &&
                   error.response.data &&
                   error.response.data.message) ||
               error.message ||
               error.toString();
+
+          this.loading = false;
         }
       )
     }
