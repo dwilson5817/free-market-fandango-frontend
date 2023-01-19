@@ -8,6 +8,10 @@ class AccountService {
     return axios.get(API_URL + 'account');
   }
 
+  getAccount(cardNumber) {
+    return axios.get(API_URL + 'account/' + cardNumber);
+  }
+
   createAccount(account) {
     return axios.put(API_URL + 'account', account, { headers: authHeader() });
   }

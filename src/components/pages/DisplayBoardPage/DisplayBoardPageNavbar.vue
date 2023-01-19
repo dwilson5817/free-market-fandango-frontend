@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-dark"  style="background: linear-gradient(90deg, rgba(154,202,60,1) 0%, rgba(154,202,60,1) 0%, rgba(213,54,75,1) 100%);">
+  <nav class="navbar navbar-dark" style="background: linear-gradient(90deg, rgba(154,202,60,1) 0%, rgba(154,202,60,1) 0%, rgba(213,54,75,1) 100%);">
     <div class="container">
       <div class="row">
         <div class="col-2">
