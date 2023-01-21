@@ -1,14 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container">
-      <a @click.prevent="account = null" class="navbar-brand" href="./#/">
-        <img src="../../../assets/logo.svg" alt="" width="200">
-      </a>
-      <div class="d-flex">
-        <a href="/#/admin" class="btn btn-outline-danger" role="button">Admin</a>
-      </div>
-    </div>
-  </nav>
+  <v-navbar></v-navbar>
   <div class="container">
     <transition name="slide-left" mode="out-in">
       <div v-if="account">
@@ -30,10 +21,10 @@
           <form @submit.prevent="checkBalance">
             <h5 class="card-title mb-3">Enter your card number below to see your current balance.</h5>
             <div class="row">
-              <div class="col-10">
+              <div class="col-md-8 col-lg-10 me-3 me-md-0">
                 <input v-model="cardNumber" type="number" class="form-control form-control-lg" placeholder="Card number" :disabled="loading">
               </div>
-              <div class="col-2">
+              <div class="col-md-4 col-lg-2 my-3 my-md-0">
                 <div class="d-inline-block w-100 position-relative" style="height: 2rem">
                   <Transition name="slide-left">
                     <button v-if="loading" type="submit" class="btn btn-success btn-lg w-100 position-absolute" disabled>
@@ -57,10 +48,11 @@
 <script>
 import VAlertMessage from "@/components/VAlertMessage.vue";
 import AccountService from "@/services/account.service";
+import VNavbar from "@/components/VNavbar.vue";
 
 export default {
   name: "index",
-  components: {VAlertMessage},
+  components: {VNavbar, VAlertMessage},
   methods: {
     checkBalance() {
       this.loading = true;

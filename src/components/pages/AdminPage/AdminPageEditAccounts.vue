@@ -1,5 +1,5 @@
 <template>
-  <div class="card border-primary mt-3">
+  <div class="card border-primary mb-3">
     <div class="card-header">
       Accounts
     </div>
