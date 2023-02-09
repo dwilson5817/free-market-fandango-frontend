@@ -8,7 +8,11 @@
       </div>
       <div class="col-10 g-0 border-end">
         <marquee-text class="w-100" :key="this.news">
-          <h4 class="my-2">{{ news }} <span class="mx-3">&#9608;</span></h4>
+          <h4 class="my-2">
+            {{ news.body }}
+            <span v-if="news.breaking" class="badge text-bg-light mx-3">BREAKING</span>
+            <span v-else class="mx-3">&#9608;</span>
+          </h4>
         </marquee-text>
       </div>
     </div>
@@ -23,11 +27,9 @@ export default {
   components: {
     MarqueeText
   },
-  data() {
-    return {
-      news: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam a purus at justo ultrices commodo. Ut vitae nisi nisi. Phasellus tempor vestibulum nulla, sit amet vehicula nunc.",
-    }
-  }
+  props: [
+    'news'
+  ]
 }
 </script>
 

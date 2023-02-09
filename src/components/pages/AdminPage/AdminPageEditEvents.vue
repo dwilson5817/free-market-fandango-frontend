@@ -56,8 +56,20 @@
             <label for="floatingInput">News Story</label>
           </div>
           <div class="form-floating mb-3">
-            <input v-model="event.tags" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <input v-model="event.tags" type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
             <label for="floatingInput">Tags</label>
+          </div>
+          <div class="form-floating mb-3">
+            <div class="form-check">
+              <input v-model="event.breaking" class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+              <label class="form-check-label" for="flexCheckChecked">
+                Breaking?
+              </label>
+            </div>
+          </div>
+          <div class="form-floating mb-3">
+            <input v-model="event.videoUrl" type="text" class="form-control" id="floatingInput" placeholder="name@example.com" :disabled="!event.breaking">
+            <label for="floatingInput">Video URL</label>
           </div>
           <div class="row">
             <div class="col">
@@ -127,6 +139,8 @@ export default {
           this.event = {
             title: null,
             body: null,
+            breaking: false,
+            videoUrl: null,
             tags: null
           }
 

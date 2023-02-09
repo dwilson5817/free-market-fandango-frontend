@@ -2,7 +2,7 @@
   <marquee-text class="w-100 text-white border-start" :key="this.accounts">
     <h4 class="my-2">
       <span v-for="account in this.accounts" class="me-3">
-        {{ account.fullName }}
+        {{ account.name }}
         <span class="badge bg-dark text-white">
           <span class="edinbuck-sign"></span>
           {{ toCurrency(account.balance) }}
@@ -27,7 +27,7 @@ export default {
       accounts: {}
     }
   },
-    mounted() {
+  mounted() {
     this.timer = setInterval(() => {
       this.updateValues()
     }, 5000)
