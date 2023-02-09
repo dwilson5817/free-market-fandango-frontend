@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-dark" style="background: linear-gradient(90deg, rgba(154,202,60,1) 0%, rgba(154,202,60,1) 0%, rgba(213,54,75,1) 100%);">
+  <nav class="navbar navbar-dark gradient-ease">
     <div class="container">
       <div class="row">
         <div class="col-2">
@@ -25,5 +25,30 @@ export default {
 </script>
 
 <style scoped>
+.gradient-ease {
+    background: linear-gradient(0deg, #9aca3c, #d5364b);
+    background-size: 400% 400%;
 
+    -webkit-animation: gradient-ease 10s ease infinite;
+    -moz-animation: gradient-ease 10s ease infinite;
+    animation: gradient-ease 10s ease infinite;
+}
+
+@-webkit-keyframes gradient-ease {
+    0%{background-position:50% 0%}
+    50%{background-position:50% 100%}
+    100%{background-position:50% 0%}
+}
+
+@-moz-keyframes gradient-ease {
+    0%{background-position:50% 0%}
+    50%{background-position:50% 100%}
+    100%{background-position:50% 0%}
+}
+
+@keyframes gradient-ease {
+    0%{background-position:50% 0%}
+    50%{background-position:50% 100%}
+    100%{background-position:50% 0%}
+}
 </style>
