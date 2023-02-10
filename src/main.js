@@ -6,11 +6,13 @@ import HomePage from "@/components/pages/HomePage/index.vue";
 import DisplayBoardPage from "@/components/pages/DisplayBoardPage/index.vue";
 import EnterAdminPasswordPage from "@/components/pages/EnterAdminPasswordPage/index.vue";
 import AdminPage from "@/components/pages/AdminPage/index.vue";
+import PurchasePage from "@/components/pages/PurchasePage/index.vue";
 
 const routes = [
   { path: '/', component: HomePage },
   { path: '/admin', component: AdminPage },
   { path: '/admin/auth', component: EnterAdminPasswordPage },
+  { path: '/admin/purchase', component: PurchasePage },
   { path: '/board', component: DisplayBoardPage },
 ]
 
@@ -20,7 +22,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  const adminPages = ['/admin'];
+  const adminPages = ['/admin', '/admin/purchase'];
   const authRequired = adminPages.includes(to.path);
   const loggedIn = localStorage.getItem('authToken');
 

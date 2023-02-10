@@ -16,6 +16,9 @@
           <li class="nav-item">
             <router-link to="/admin" :class="{ 'active': route.path === '/admin' }" class="nav-link" :aria-current="{ 'page': route.path === '/admin' }">Admin</router-link>
           </li>
+          <li class="nav-item">
+            <router-link to="/admin/purchase" :class="{ 'active': route.path === '/admin/purchase' }" class="nav-link" :aria-current="{ 'page': route.path === '/admin/purchase' }">Purchase</router-link>
+          </li>
         </ul>
         <div class="d-flex">
           <button v-if="loggedIn" @click="logout" class="btn btn-outline-danger">Logout</button>
