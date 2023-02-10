@@ -4,7 +4,9 @@
       Stocks
     </div>
     <div class="card-body">
-      <v-alert-message :message="errorMessage" type="danger" v-on:close="errorMessage = null"></v-alert-message>
+      <v-alert-message :display="errorMessage !== null" type="danger" @close="errorMessage = null" dismissible>
+        {{ errorMessage }}
+      </v-alert-message>
       <v-admin-page-table
           name="stock"
           key-name="code"

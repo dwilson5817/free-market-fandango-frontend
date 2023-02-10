@@ -12,7 +12,9 @@
       </button>
     </div>
     <div class="card-body">
-      <v-alert-message :message="errorMessage" v-on:close="errorMessage = null" type="danger"></v-alert-message>
+      <v-alert-message :display="errorMessage !== null" @close="errorMessage = null" type="danger" dismissible>
+        {{ errorMessage }}
+      </v-alert-message>
       <div v-if="Object.keys(this.events).length === 0" class="card text-bg-secondary">
         <div class="card-body">
           <h5 class="card-title">No Events Created Yet</h5>
@@ -46,7 +48,9 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <v-alert-message :message="modalMessage" v-on:close="modalMessage = null" type="danger"></v-alert-message>
+          <v-alert-message :display="modalMessage !== null" @close="modalMessage = null" type="danger" dismissible>
+            {{ modalMessage }}
+          </v-alert-message>
           <div class="form-floating mb-3">
             <input v-model="event.title" type="text" class="form-control" id="floatingInput" placeholder="Title">
             <label for="floatingInput">Title</label>
@@ -130,6 +134,8 @@ export default {
                   error.response.data.message) ||
               error.message ||
               error.toString();
+
+          console.log(this.errorMessage)
         }
       );
     },

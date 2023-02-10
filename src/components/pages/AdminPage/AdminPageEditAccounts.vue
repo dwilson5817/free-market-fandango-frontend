@@ -4,7 +4,9 @@
       Accounts
     </div>
     <div class="card-body">
-      <v-alert-message :message="errorMessage" v-on:close="errorMessage = null" type="danger"></v-alert-message>
+      <v-alert-message :display="errorMessage !== null" @close="errorMessage = null" type="danger" dismissible>
+        {{ errorMessage }}
+      </v-alert-message>
       <v-admin-page-table
           name="account"
           key-name="cardNumber"

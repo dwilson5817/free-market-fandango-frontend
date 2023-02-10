@@ -15,9 +15,11 @@
             <strong>You need an administrator password to continue.</strong>
           </div>
         </div>
-        <v-alert-message :message="message" type="danger" @close="message = null"></v-alert-message>
         <div class="card border-danger">
           <div class="card-body">
+            <v-alert-message :display="message !== null" type="danger" @close="message = null" dismissible>
+              {{ message }}
+            </v-alert-message>
             <form @submit.prevent="handleLogin">
               <div class="mb-3">
                 <label for="inputAdminPassword" class="form-label">Password</label>

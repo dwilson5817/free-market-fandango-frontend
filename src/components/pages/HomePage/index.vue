@@ -16,7 +16,9 @@
       </div>
       <div v-else class="card border-primary my-3">
         <div class="card-body">
-          <v-alert-message :message="errorMessage" type="danger" v-on:close="errorMessage = null"></v-alert-message>
+          <v-alert-message :display="errorMessage !== null" type="danger" v-on:close="errorMessage = null" dismissible>
+            {{ errorMessage }}
+          </v-alert-message>
 
           <form @submit.prevent="checkBalance">
             <h5 class="card-title mb-3">Enter your card number below to see your current balance.</h5>

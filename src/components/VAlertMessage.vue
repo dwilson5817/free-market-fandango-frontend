@@ -1,8 +1,8 @@
 <template>
   <Transition name="slide">
-    <div v-if="message !== null" :class="alertClassName" class="alert alert-dismissible">
-      {{ message }}
-      <a @click.prevent="closeAlert" type="button" class="btn-close" aria-label="Close"></a>
+    <div v-if="display" :class="alertClassName" class="alert">
+      <slot></slot>
+      <a v-if="dismissible" @click.prevent="closeAlert" type="button" class="btn-close" aria-label="Close"></a>
     </div>
   </Transition>
 </template>
@@ -10,13 +10,18 @@
 <script>
 export default {
   name: "VAlertMessage",
-  props: [
-      'message',
-      'type'
-  ],
+  emits: [ 'close' ],
+  props: {
+      type: String,
+      display: Boolean,
+      dismissible: Boolean,
+  },
   computed: {
     alertClassName() {
-      return 'alert-' + this.type;
+      return {
+        ['alert-' + this.type]: true,
+        'alert-dismissible': this.dismissible
+      };
     }
   },
   methods: {
