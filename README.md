@@ -2,6 +2,8 @@
 
 A stock market themed party where drink choices and events affect prices.
 
+See the live version at [free-market-fandango.dylanwilson.dev](https://free-market-fandango.dylanwilson.dev/).
+
 ## Frontend
 
 The user interface for the application which users will interact with, written in Vue.js.  
