@@ -21,6 +21,10 @@
 </template>
 
 <script>
+import upSvg from '../../../assets/up.svg'
+import downSvg from '../../../assets/down.svg'
+import flatSvg from '../../../assets/flat.svg'
+
 export default {
   name: "DisplayBoardStockListItem",
   props: [
@@ -30,11 +34,11 @@ export default {
   computed: {
     imageUrl() {
       if (this.stockProps.pctChange < 0)
-        return '/src/assets/down.svg'
+        return upSvg
       else if (this.stockProps.pctChange > 0)
-        return '/src/assets/up.svg'
+        return downSvg
       else
-        return '/src/assets/flat.svg'
+        return flatSvg
     }
   }
 }
