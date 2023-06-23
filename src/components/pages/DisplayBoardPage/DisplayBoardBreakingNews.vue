@@ -21,8 +21,8 @@
       <div class="w-5/6 mx-auto">
         <div class="p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
           <video
-            width="640"
-            height="480"
+            width="1920"
+            height="1080"
             autoplay
             @ended="onEnd()"
             class="mx-auto"
@@ -36,24 +36,6 @@
         </div>
       </div>
       </div>
-<!--      <div class="container mt-3">-->
-<!--        <div class="card">-->
-<!--          <div class="card-body text-center">-->
-<!--            <video-->
-<!--              width="640"-->
-<!--              height="480"-->
-<!--              autoplay-->
-<!--              @ended="onEnd()"-->
-<!--            >-->
-<!--              <source-->
-<!--                :src="news.videoUrl"-->
-<!--                type="video/mp4"-->
-<!--              >-->
-<!--              Your browser does not support the video tag.-->
-<!--            </video>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
   </transition>
 </template>
 
