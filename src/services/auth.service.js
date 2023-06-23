@@ -5,12 +5,12 @@ const API_URL = import.meta.env.VITE_API_URL;
 class AuthService {
   login(password) {
     return axios
-      .post(API_URL + 'auth', {
-        admin_password: password
+      .post(API_URL + 'auth/', {
+        password: password
       })
       .then(response => {
-        if (response.data.token) {
-          localStorage.setItem('authToken', response.data.token);
+        if (response.data.access_token) {
+          localStorage.setItem('authToken', response.data.access_token);
         }
 
         return response.data;

@@ -1,39 +1,22 @@
-<template>
-  <div class="mb-3">
-    <label for="inputAdminPassword" class="form-label">Card number</label>
-    <input @change="changeCardNumber" v-model="cardNumber" type="number" class="form-control" id="inputAdminPassword" aria-describedby="adminPasswordHelp" :disabled="submitting">
-    <div id="adminPasswordHelp" class="form-text">The card number associated with the purchasers account.</div>
-  </div>
-  <purchase-page-account-info :load-account="cardNumberChanged" :card-number="cardNumber" @account-loaded="accountLoaded"></purchase-page-account-info>
-</template>
-
-<script>
+<script setup>
+import { Input } from "flowbite-vue";
 import PurchasePageAccountInfo from "@/components/pages/PurchasePage/PurchasePageAccountInfo.vue";
 
-export default {
-  name: "PurchasePageAccountInput",
-  props: [ 'submitting' ],
-  emits: [ 'cardNumberChanged', 'balanceChanged' ],
-  components: { PurchasePageAccountInfo },
-  data() {
-    return {
-      cardNumber: null,
-      account: null,
-      cardNumberChanged: false
-    }
-  },
-  methods: {
-    changeCardNumber() {
-      this.cardNumberChanged = true;
-      this.$emit('cardNumberChanged', this.cardNumber)
-    },
-    accountLoaded(balance) {
-      this.cardNumberChanged = false;
-      this.$emit('balanceChanged', balance);
-    }
-  }
-}
+defineProps(['modelValue', 'submitting', 'accountInfo'])
+defineEmits(['update:modelValue'])
 </script>
+
+<template>
+  <div class="mb-4">
+    <Input :value="modelValue" @input="$emit('update:modelValue', $event.target.value)" :disabled="submitting" size="lg" placeholder="1234" label="Card number">
+      <template #prefix>
+        <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path clip-rule="evenodd" d="M2.5 4A1.5 1.5 0 001 5.5V6h18v-.5A1.5 1.5 0 0017.5 4h-15zM19 8.5H1v6A1.5 1.5 0 002.5 16h15a1.5 1.5 0 001.5-1.5v-6zM3 13.25a.75.75 0 01.75-.75h1.5a.75.75 0 010 1.5h-1.5a.75.75 0 01-.75-.75zm4.75-.75a.75.75 0 000 1.5h3.5a.75.75 0 000-1.5h-3.5z" fill-rule="evenodd"></path>
+        </svg>
+      </template>
+    </Input>
+  </div>
+</template>
 
 <style scoped>
 

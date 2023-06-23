@@ -1,31 +1,68 @@
 <template>
   <transition name="fade">
-    <div v-if="!hidden" class="cover">
-      <div class="container mt-3">
-        <div class="row">
-          <div class="col">
-            <div class="glitch" data-text="BREAKING NEWS">BREAKING NEWS</div>
-            <div class="glow">BREAKING NEWS</div>
+    <div
+      v-if="!hidden"
+      class="cover"
+    >
+      <div class="container mx-auto">
+        <div>
+          <div
+            class="glitch"
+            data-text="BREAKING NEWS"
+          >
+            BREAKING NEWS
           </div>
-            <div class="scanlines"></div>
+          <div class="glow">
+            BREAKING NEWS
+          </div>
         </div>
-
-        <div class="card">
-          <div class="card-body text-center">
-           <video width="640" height="480" @ended="onEnd()" autoplay>
-              <source :src="news.videoUrl" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          </div>
+        <div class="scanlines" />
+        </div>
+      <div class="w-5/6 mx-auto">
+        <div class="p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+          <video
+            width="640"
+            height="480"
+            autoplay
+            @ended="onEnd()"
+            class="mx-auto"
+          >
+            <source
+              :src="news.video_url"
+              type="video/mp4"
+            >
+            Your browser does not support the video tag.
+          </video>
         </div>
       </div>
-    </div>
+      </div>
+<!--      <div class="container mt-3">-->
+<!--        <div class="card">-->
+<!--          <div class="card-body text-center">-->
+<!--            <video-->
+<!--              width="640"-->
+<!--              height="480"-->
+<!--              autoplay-->
+<!--              @ended="onEnd()"-->
+<!--            >-->
+<!--              <source-->
+<!--                :src="news.videoUrl"-->
+<!--                type="video/mp4"-->
+<!--              >-->
+<!--              Your browser does not support the video tag.-->
+<!--            </video>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
   </transition>
 </template>
 
 <script>
+import DisplayBoardPageAccounts from "@/components/pages/DisplayBoardPage/DisplayBoardPageAccounts.vue";
+
 export default {
   name: "DisplayBoardBreakingNews",
+  components: {DisplayBoardPageAccounts},
   props: [
     'news',
     'hidden'

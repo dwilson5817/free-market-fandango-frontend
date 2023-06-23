@@ -4,16 +4,19 @@ import store from './store'
 import App from './App.vue'
 import HomePage from "@/components/pages/HomePage/index.vue";
 import DisplayBoardPage from "@/components/pages/DisplayBoardPage/index.vue";
-import EnterAdminPasswordPage from "@/components/pages/EnterAdminPasswordPage/index.vue";
 import AdminPage from "@/components/pages/AdminPage/index.vue";
 import PurchasePage from "@/components/pages/PurchasePage/index.vue";
+import AccountPage from "@/components/pages/AccountPage/index.vue";
+import './index.css';
+import AdminLoginPage from "@/components/pages/AdminLoginPage/index.vue";
 
 const routes = [
   { path: '/', component: HomePage },
+  { path: '/account', component: AccountPage },
   { path: '/admin', component: AdminPage },
-  { path: '/admin/auth', component: EnterAdminPasswordPage },
+  { path: '/admin/auth', component: AdminLoginPage },
   { path: '/admin/purchase', component: PurchasePage },
-  { path: '/board', component: DisplayBoardPage },
+  { path: '/admin/board', component: DisplayBoardPage },
 ]
 
 const router = createRouter({

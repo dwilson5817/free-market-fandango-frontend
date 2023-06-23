@@ -3,15 +3,16 @@
 </script>
 
 <template>
-  <header>
-
-  </header>
+  <header />
 
   <main>
     <router-view v-slot="{ Component, route }">
-      <transition name="slide-left" mode="out-in">
+      <transition
+        name="slide-left"
+        mode="out-in"
+      >
         <div :key="route.path">
-          <component :is="Component"></component>
+          <component :is="Component" />
         </div>
       </transition>
     </router-view>

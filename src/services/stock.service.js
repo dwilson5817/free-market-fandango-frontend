@@ -6,15 +6,19 @@ const API_URL = import.meta.env.VITE_API_URL;
 class StockService {
 
   getStocks() {
-    return axios.get(API_URL + 'stock');
+    return axios.get(API_URL + 'stocks/');
   }
 
   createStock(stock) {
-    return axios.put(API_URL + 'stock', stock, { headers: authHeader() });
+    return axios.put(API_URL + 'stocks/', stock, { headers: authHeader() });
+  }
+
+  updateStockInStockStatus(stockCode, inStock) {
+    return axios.put(API_URL + 'stocks/' + stockCode + '/?in_stock=' + inStock, null, { headers: authHeader() });
   }
 
   deleteStock(stockCode) {
-    return axios.delete(API_URL + 'stock/' + stockCode, { headers: authHeader() });
+    return axios.delete(API_URL + 'stocks/' + stockCode, { headers: authHeader() });
   }
 }
 

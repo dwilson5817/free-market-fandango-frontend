@@ -1,61 +1,44 @@
+<script setup>
+import {computed, ref} from "vue";
+import VAlertMessage from "@/components/VAlertMessage.vue";
+
+const errorMessage = ref(null);
+
+const props = defineProps(['modelValue', 'stocks', 'loading', 'disabled']);
+defineEmits(['update:modelValue']);
+
+const inStockStocks = computed(() => {
+  return props.stocks.filter(stock => stock.in_stock);
+})
+</script>
+
 <template>
-  <div class="mb-3">
-    <label for="stockSelect" class="form-label">Stock</label>
-    <select v-model="stockCode" @change="$emit('stockChanged', stockCode, stocks[stockCode].currentPrice)" id="stockSelect" class="form-select" :disabled="submitting">
-      <option v-if="stocks === null">Loading...</option>
-      <option v-else-if="Object.keys(stocks).length === 0">No stocks created</option>
-      <option v-else v-for="(stock, code) in stocks" :value="code">{{ stock.fullName }} ({{ code }})</option>
-    </select>
-    <div id="stockSelectHelp" class="form-text">The stock the user is purchasing.</div>
-  </div>
-  <v-alert-message :display="errorMessage !== null" type="danger" @close="errorMessage = null" dismissible>
+  <label for="stockSelect" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Select an option</label>
+  <select id="stockSelect" :value="modelValue" @input="$emit('update:modelValue', $event.target.value)" :disabled="disabled" class="block w-full px-4 py-3 mb-4 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+      <option v-if="stocks === null">
+        Loading...
+      </option>
+      <option v-else-if="Object.keys(inStockStocks).length === 0">
+        No stocks available
+      </option>
+      <option
+        v-for="stock in inStockStocks"
+        v-else
+        :value="stock.code"
+      >
+        {{ stock.code }} {{ stock.name }} ({{ stock.price }} Edinbucks)
+      </option>
+  </select>
+
+  <v-alert-message
+    :display="errorMessage !== null"
+    type="danger"
+    dismissible
+    @close="errorMessage = null"
+  >
     {{ errorMessage }}
   </v-alert-message>
 </template>
-
-<script>
-import StockService from "@/services/stock.service";
-import VAlertMessage from "@/components/VAlertMessage.vue";
-
-export default {
-  name: "PurchasePageStockSelector",
-  props: [ 'submitting' ],
-  emits: [ 'stockChanged' ],
-  components: { VAlertMessage },
-  data() {
-    return {
-      stocks: null,
-      stockCode: null,
-      loading: false,
-      errorMessage: null,
-    }
-  },
-  methods: {
-    updateStocks() {
-      StockService.getStocks().then(
-        response => {
-          this.stocks = response.data;
-          this.loading = false;
-        },
-        error => {
-          this.errorMessage =
-              (error.response &&
-                  error.response.data &&
-                  error.response.data.message) ||
-              error.message ||
-              error.toString();
-
-          this.loading = false;
-        }
-      )
-    },
-  },
-  mounted() {
-    this.loading = true;
-    this.updateStocks();
-  }
-}
-</script>
 
 <style scoped>
 

@@ -1,26 +1,51 @@
 <template>
-  <nav class="navbar navbar-dark gradient-ease">
-    <div class="container">
-      <div class="row">
-        <div class="col-2">
-          <a class="navbar-brand" href="#">
-            <img src="../../../assets/logo.svg" alt="" width="200">
-          </a>
+<!--  <nav class="navbar navbar-dark gradient-ease">-->
+<!--    <div class="container">-->
+<!--      <div class="row">-->
+<!--        <div class="col-2">-->
+<!--          <a-->
+<!--            class="navbar-brand"-->
+<!--            href="#"-->
+<!--          >-->
+<!--            <img-->
+<!--              src="../../../assets/logo.svg"-->
+<!--              alt=""-->
+<!--              width="200"-->
+<!--            >-->
+<!--          </a>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="col-10">-->
+<!--        <display-board-page-accounts />-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </nav>-->
+  <div class="gradient-ease">
+    <div class="px-3">
+      <div class="grid grid-cols-7">
+        <div class="py-4 pr-4 text-center mx-auto">
+          <img src="../../../assets/logo.svg" class="h-12" alt="Flowbite Logo" />
+        </div>
+
+        <div class="w-full border-white border-x-2 col-span-6 bg-gray-900 bg-opacity-20">
+            <display-board-page-accounts />
         </div>
       </div>
-      <div class="col-10">
-        <display-board-page-accounts></display-board-page-accounts>
-      </div>
     </div>
-  </nav>
+  </div>
 </template>
 
 <script>
 import DisplayBoardPageAccounts from "@/components/pages/DisplayBoardPage/DisplayBoardPageAccounts.vue";
+import {Navbar, NavbarCollapse, NavbarLink, NavbarLogo} from "flowbite-vue";
+import NewsService from "@/services/news.service";
+import _ from "lodash";
+import SpotifyService from "@/services/spotify.service";
+import poweredByGiphy from "@/assets/powered_by_giphy.png";
 
 export default {
   name: "DisplayBoardPageNavbar",
-  components: {DisplayBoardPageAccounts}
+  components: {NavbarLink, NavbarCollapse, NavbarLogo, Navbar, DisplayBoardPageAccounts},
 }
 </script>
 

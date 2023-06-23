@@ -1,9 +1,9 @@
 <template>
-  <div class="container">
-    <div class="row row-cols-2">
-      <div v-for="(stockProps, stockName) in this.stocks" class="col">
-        <display-board-stock-list-item :stock-code="stockName" :stock-props="stockProps"></display-board-stock-list-item>
-      </div>
+  <div class="p-4 px-6">
+    <div class="grid grid-cols-4 gap-4">
+      <display-board-stock-list-item v-for="stock in stocks" class="col"
+        :stock="stock"
+      />
     </div>
   </div>
 </template>
@@ -25,7 +25,13 @@ export default {
   mounted() {
     this.timer = setInterval(() => {
       this.updateValues()
-    }, 5000)
+    }, 30000)
+  },
+  beforeUnmount() {
+    clearInterval(this.timer)
+  },
+  created() {
+    this.updateValues();
   },
   methods: {
     updateValues() {
@@ -41,12 +47,6 @@ export default {
         }
       )
     }
-  },
-  beforeUnmount() {
-    clearInterval(this.timer)
-  },
-  created() {
-    this.updateValues();
   }
 }
 </script>

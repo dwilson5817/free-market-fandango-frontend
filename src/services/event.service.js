@@ -5,15 +5,15 @@ const API_URL = import.meta.env.VITE_API_URL;
 
 class EventService {
   getEvents() {
-    return axios.get(API_URL + 'event');
+    return axios.get(API_URL + 'events/');
   }
 
   createEvent(event) {
-    return axios.post(API_URL + 'event', event, { headers: authHeader() });
+    return axios.put(API_URL + 'events/', event, { headers: authHeader() });
   }
 
   deleteEvent(eventId) {
-    return axios.delete(API_URL + 'event/' + eventId, { headers: authHeader() });
+    return axios.delete(API_URL + 'events/' + eventId, { headers: authHeader() });
   }
 }
 
