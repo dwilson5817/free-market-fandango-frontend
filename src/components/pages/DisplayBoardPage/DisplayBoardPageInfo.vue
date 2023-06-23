@@ -72,11 +72,6 @@
           <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">
             See how it works and check your balance at <strong>dyln.dev/u/cIMI2y</strong> or use the QR code on the right.
           </p>
-
-          <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">
-            Commit ID {{ debugInfo.commitId }}.
-
-          </p>
         </div>
         <div class="col-span-2 bg-white h-full align-items-center relative">
           <div class="absolute top-1/2 -translate-y-1/2">
@@ -100,10 +95,7 @@ export default {
       updatedAt: Date.now(),
       playTimePct: 60,
       paused: false,
-      error: null,
-      debugInfo: {
-        commitId: import.meta.env.VITE_COMMIT_ID
-      }
+      error: null
     }
   },
   created() {
