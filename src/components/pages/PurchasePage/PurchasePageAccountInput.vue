@@ -1,6 +1,5 @@
 <script setup>
 import {Button, Input} from "flowbite-vue";
-import PurchasePageAccountInfo from "@/components/pages/PurchasePage/PurchasePageAccountInfo.vue";
 
 defineProps(['modelValue', 'submitting', 'accountInfo'])
 defineEmits(['update:modelValue'])
@@ -15,7 +14,7 @@ defineEmits(['update:modelValue'])
         </svg>
       </template>
       <template #suffix>
-        <Button type="button" @click="$emit('update:modelValue', $event.target.value)">
+        <Button @click.prevent="$emit('update:modelValue', modelValue)">
           Check
         </Button>
       </template>
