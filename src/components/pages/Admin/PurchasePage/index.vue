@@ -1,7 +1,7 @@
 <script setup>
 import { Button } from "flowbite-vue";
 import PurchaseService from "@/services/purchase.service";
-import {computed, onBeforeUnmount, onMounted, reactive, ref} from "vue";
+import {computed, onBeforeUnmount, onMounted, reactive, ref, watch} from "vue";
 import PurchasePageLatestPurchases from "@/components/pages/Admin/PurchasePage/PurchasePageLatestPurchases.vue";
 import VAlertMessage from "@/components/VAlertMessage.vue";
 import PurchasePageStockSelector from "@/components/pages/Admin/PurchasePage/PurchasePageStockSelector.vue";
@@ -12,10 +12,8 @@ import PurchasePageAccountInfo from "@/components/pages/Admin/PurchasePage/Purch
 import AppLayout from "@/components/AppLayout.vue";
 import AppCard from "@/components/AppCard.vue";
 
-const purchase = reactive({
-  card_number: null,
-  stock_code: null
-});
+const card_number = ref(null);
+const stock_code = ref(null);
 
 const accountInfo = ref(null);
 const accountLoading = ref(false);
@@ -37,7 +35,7 @@ onBeforeUnmount(() => {
 })
 
 const selectedStockPrice = computed(() => {
-  const selectedStock = stocks.value.filter(stock => stock.code === purchase.stock_code)
+  const selectedStock = stocks.value.filter(stock => stock.code === stock_code.value)
 
   if (selectedStock.length === 0)
     return null
@@ -55,10 +53,10 @@ const selectedAccountBalance = computed(() => {
 function submitPurchase() {
   submitting.value = true;
 
-  PurchaseService.createPurchase(purchase).then(
+  PurchaseService.createPurchase({ card_number: card_number.value, stock_code: stock_code.value }).then(
     response => {
-      purchase.card_number = null;
-      purchase.stock_code = null;
+      card_number.value = null;
+      stock_code.value = null;
 
       accountInfo.value = null;
 
@@ -100,7 +98,7 @@ function updateStocks() {
 function getAccountInfo() {
   accountLoading.value = true;
 
-  AccountService.getAccount(purchase.card_number).then(
+  AccountService.getAccount(card_number.value).then(
     response => {
       accountInfo.value = response.data;
       accountLoading.value = false;
@@ -117,6 +115,11 @@ function getAccountInfo() {
     }
   )
 }
+
+watch(card_number, async (newCardNumber) => {
+  if (newCardNumber !== null && newCardNumber.length === 4)
+  getAccountInfo();
+})
 
 updateStocks();
 </script>
@@ -147,9 +150,9 @@ updateStocks();
         </v-alert-message>
 
         <form @submit.prevent="submitPurchase">
-          <purchase-page-account-input v-model="purchase.card_number" :submitting="submitting" @change="getAccountInfo" />
+          <purchase-page-account-input v-model="card_number" :submitting="submitting" />
           <purchase-page-account-info :accountInfo="accountInfo" class="mt-4" />
-          <purchase-page-stock-selector v-model="purchase.stock_code" :stocks="stocks" :disabled="submitting || purchase.card_number === ''" />
+          <purchase-page-stock-selector v-model="stock_code" :stocks="stocks" :disabled="submitting || card_number === ''" />
           <v-alert-message v-if="selectedAccountBalance !== null && selectedStockPrice !== null && selectedAccountBalance < selectedStockPrice"
             :display="true"
             type="danger"
