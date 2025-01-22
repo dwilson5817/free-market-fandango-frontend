@@ -17,6 +17,7 @@ import {
   CreditCard,
   Gauge,
   LogOut,
+  Music,
 } from 'lucide-react'
 import { Link } from 'react-router'
 import LogoIcon from '@/assets/logo-icon.svg'
@@ -49,6 +50,16 @@ const data = {
         },
       ]
     },
+    {
+      title: 'Advanced',
+      items: [
+        {
+          title: 'Spotify',
+          url: '/admin/spotify',
+          icon: Music,
+        },
+      ]
+    }
   ],
 }
 

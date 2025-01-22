@@ -11,6 +11,7 @@ import AdminCards from '@/app/routes/admin/cards.tsx'
 import AdminDashboard from '@/app/routes/admin/dashboard.tsx'
 import AdminStocks from '@/app/routes/admin/stocks.tsx'
 import AdminEvents from '@/app/routes/admin/events.tsx'
+import AdminSpotify from '@/app/routes/admin/spotify.tsx'
 import { SidebarProvider } from '@/components/ui/sidebar.tsx'
 
 export const Router = () => {
@@ -37,6 +38,7 @@ export const Router = () => {
             <Route path="cards" element={<AdminCards />} />
             <Route path="events" element={<AdminEvents />} />
             <Route path="stocks" element={<AdminStocks />} />
+            <Route path="spotify" element={<AdminSpotify />} />
           </Route>
         </Routes>
 
