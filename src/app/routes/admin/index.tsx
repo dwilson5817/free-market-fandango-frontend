@@ -1,8 +1,15 @@
 import { Outlet } from 'react-router'
+import { AdminSidebar } from '@/components/admin-sidebar.tsx'
+import { SidebarInset } from '@/components/ui/sidebar.tsx'
 
 const Admin = () => {
   return (
-    <Outlet />
+    <>
+      <AdminSidebar />
+      <SidebarInset>
+        <Outlet />
+      </SidebarInset>
+    </>
   )
 }
 
