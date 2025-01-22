@@ -1,0 +1,41 @@
+import { BrowserRouter, Route, Routes } from 'react-router'
+import { ProtectedRoute } from '@/components/protected-route.tsx'
+import { Toaster } from '@/components/ui/toaster.tsx'
+import Home from '@/app/routes/home.tsx'
+import Card from '@/app/routes/card.tsx'
+import Stocks from '@/app/routes/stocks.tsx'
+import Help from '@/app/routes/help.tsx'
+import Admin from '@/app/routes/admin'
+import AdminAuth from '@/app/routes/admin/auth.tsx'
+import AdminDashboard from '@/app/routes/admin/dashboard.tsx'
+import { SidebarProvider } from '@/components/ui/sidebar.tsx'
+
+export const Router = () => {
+  return (
+    <BrowserRouter>
+      <div className="min-h-screen flex flex-col">
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path="card" element={<Card />} />
+          <Route path="stocks" element={<Stocks />} />
+          <Route path="help" element={<Help />} />
+          <Route path="auth" element={<AdminAuth />} />
+          <Route
+            path="admin"
+            element={
+              <ProtectedRoute>
+                <SidebarProvider>
+                  <Admin />
+                </SidebarProvider>
+              </ProtectedRoute>
+            }
+          >
+            <Route index element={<AdminDashboard />} />
+          </Route>
+        </Routes>
+
+        <Toaster />
+      </div>
+    </BrowserRouter>
+  )
+}
