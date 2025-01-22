@@ -9,6 +9,7 @@ import Admin from '@/app/routes/admin'
 import AdminAuth from '@/app/routes/admin/auth.tsx'
 import AdminCards from '@/app/routes/admin/cards.tsx'
 import AdminDashboard from '@/app/routes/admin/dashboard.tsx'
+import AdminStocks from '@/app/routes/admin/stocks.tsx'
 import AdminEvents from '@/app/routes/admin/events.tsx'
 import { SidebarProvider } from '@/components/ui/sidebar.tsx'
 
@@ -35,6 +36,7 @@ export const Router = () => {
             <Route index element={<AdminDashboard />} />
             <Route path="cards" element={<AdminCards />} />
             <Route path="events" element={<AdminEvents />} />
+            <Route path="stocks" element={<AdminStocks />} />
           </Route>
         </Routes>
 

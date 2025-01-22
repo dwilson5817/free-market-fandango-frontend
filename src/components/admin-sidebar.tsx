@@ -13,6 +13,7 @@ import {
 import {
   ArrowLeft,
   Calendar,
+  CircleDollarSign,
   CreditCard,
   Gauge,
   LogOut,
@@ -40,6 +41,11 @@ const data = {
           title: 'Events',
           url: '/admin/events',
           icon: Calendar,
+        },
+        {
+          title: 'Stocks',
+          url: '/admin/stocks',
+          icon: CircleDollarSign,
         },
       ]
     },
