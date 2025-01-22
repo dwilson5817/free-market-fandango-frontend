@@ -5,10 +5,10 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export function formatPrice(price) {
+export function formatPrice(price: number) {
   return `${price}`
 }
 
-export function formatTimestamp(timestamp) {
+export function formatTimestamp(timestamp: string) {
   return `${timestamp}`
 }

@@ -35,6 +35,7 @@ export function useMarketClose(options?: Options) {
         await options?.onError?.(error, variables, context)
 
         errorMessage({
+          // @ts-expect-error OpenAPI types currently are wrong, this should be valid, will need to modify OpenAPI spec
           description: error.message
         })
       }

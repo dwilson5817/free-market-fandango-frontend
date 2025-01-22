@@ -40,6 +40,7 @@ const Auth = () => {
       toast({
         variant: 'destructive',
         title: 'Login failed!',
+        // @ts-expect-error OpenAPI types currently are wrong, this should be valid, will need to modify OpenAPI spec
         description: error.message,
       })
     }
