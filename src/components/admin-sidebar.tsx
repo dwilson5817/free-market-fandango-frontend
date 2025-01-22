@@ -12,6 +12,7 @@ import {
 } from '@/components/ui/sidebar'
 import {
   ArrowLeft,
+  CreditCard,
   Gauge,
   LogOut,
 } from 'lucide-react'
@@ -28,6 +29,11 @@ const data = {
           title: 'Dashboard',
           url: '/admin',
           icon: Gauge,
+        },
+        {
+          title: 'Cards',
+          url: '/admin/cards',
+          icon: CreditCard,
         },
       ]
     },
