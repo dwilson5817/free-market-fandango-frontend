@@ -12,6 +12,7 @@ import {
 } from '@/components/ui/sidebar'
 import {
   ArrowLeft,
+  Calendar,
   CreditCard,
   Gauge,
   LogOut,
@@ -34,6 +35,11 @@ const data = {
           title: 'Cards',
           url: '/admin/cards',
           icon: CreditCard,
+        },
+        {
+          title: 'Events',
+          url: '/admin/events',
+          icon: Calendar,
         },
       ]
     },
