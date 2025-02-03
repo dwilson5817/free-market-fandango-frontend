@@ -1,13 +1,10 @@
-import { useApi } from '@/hooks/use-api'
+import { useApi } from "@/hooks/use-api";
 
-const METHOD = 'get' as const;
-const PATH = '/spotify/redirect' as const;
+const METHOD = "get" as const;
+const PATH = "/spotify/redirect" as const;
 
 export function useSpotifyRedirectGet() {
-  const { useQuery } = useApi()
+  const { useQuery } = useApi();
 
-  return useQuery(
-    METHOD,
-    PATH,
-  )
+  return useQuery(METHOD, PATH);
 }

@@ -1,46 +1,62 @@
-import { Button } from '@/components/ui/button.tsx'
+import { Button } from "@/components/ui/button.tsx";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem, DropdownMenuSeparator,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu.tsx'
-import { Calendar, ChevronDown, CircleDollarSign, CreditCard, LineChart } from 'lucide-react'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card.tsx'
-import { useCardsGet } from '@/hooks/data/use-cards-get.ts'
-import { useEventsGet } from '@/hooks/data/use-events-get.ts'
-import { useStocksGet } from '@/hooks/data/use-stocks-get.ts'
-import { useMarketActiveGet } from '@/hooks/data/use-market-active-get.ts'
-import { useMarketOpen } from '@/hooks/data/use-market-open.ts'
-import { useMarketClose } from '@/hooks/data/use-market-close.ts'
-import { Skeleton } from '@/components/ui/skeleton.tsx'
-import { formatTimestamp } from '@/lib/utils.ts'
-import { AdminLayout } from '@/components/admin-layout.tsx'
+} from "@/components/ui/dropdown-menu.tsx";
+import {
+  Calendar,
+  ChevronDown,
+  CircleDollarSign,
+  CreditCard,
+  LineChart,
+} from "lucide-react";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card.tsx";
+import { useCardsGet } from "@/hooks/data/use-cards-get.ts";
+import { useEventsGet } from "@/hooks/data/use-events-get.ts";
+import { useStocksGet } from "@/hooks/data/use-stocks-get.ts";
+import { useMarketActiveGet } from "@/hooks/data/use-market-active-get.ts";
+import { useMarketOpen } from "@/hooks/data/use-market-open.ts";
+import { useMarketClose } from "@/hooks/data/use-market-close.ts";
+import { Skeleton } from "@/components/ui/skeleton.tsx";
+import { formatTimestamp } from "@/lib/utils.ts";
+import { AdminLayout } from "@/components/admin-layout.tsx";
 
 const Dashboard = () => {
-  const { data: cards, isLoading: isCardsLoading } = useCardsGet()
-  const { data: events, isLoading: isEventsLoading } = useEventsGet()
-  const { data: stocks, isLoading: isStocksLoading } = useStocksGet()
+  const { data: cards, isLoading: isCardsLoading } = useCardsGet();
+  const { data: events, isLoading: isEventsLoading } = useEventsGet();
+  const { data: stocks, isLoading: isStocksLoading } = useStocksGet();
 
-  const { data: market, isLoading: isMarketGetLoading, isError: isMarketGetError } = useMarketActiveGet()
-  const { mutate: openMarket, isPending: isMarketOpening } = useMarketOpen()
-  const { mutate: closeMarket, isPending: isMarketClosing } = useMarketClose()
+  const {
+    data: market,
+    isLoading: isMarketGetLoading,
+    isError: isMarketGetError,
+  } = useMarketActiveGet();
+  const { mutate: openMarket, isPending: isMarketOpening } = useMarketOpen();
+  const { mutate: closeMarket, isPending: isMarketClosing } = useMarketClose();
 
   const stats = [
     {
-      name: 'Cards',
+      name: "Cards",
       icon: <CreditCard className="h-4 w-4 text-muted-foreground" />,
       data: cards,
       isLoading: isCardsLoading,
     },
     {
-      name: 'Events',
+      name: "Events",
       icon: <Calendar className="h-4 w-4 text-muted-foreground" />,
       data: events,
       isLoading: isEventsLoading,
     },
     {
-      name: 'Stocks',
+      name: "Stocks",
       icon: <CircleDollarSign className="h-4 w-4 text-muted-foreground" />,
       data: stocks,
       isLoading: isStocksLoading,
@@ -51,19 +67,17 @@ const Dashboard = () => {
     closeMarket({
       params: {
         path: {
-          market_uuid: market?.uuid ?? '',
+          market_uuid: market?.uuid ?? "",
         },
         query: {
           ends_in: mins,
         },
       },
-    })
-  }
+    });
+  };
 
   return (
-    <AdminLayout
-      pageName="Dashboard"
-    >
+    <AdminLayout pageName="Dashboard">
       <div className="grid gap-4 md:grid-cols-2">
         <Button
           onClick={() => openMarket({})}
@@ -100,42 +114,48 @@ const Dashboard = () => {
       </div>
       <Card>
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium">{isMarketGetLoading ?
-            <Skeleton className="h-5 w-[75px]" /> : 'Market'}</CardTitle>
+          <CardTitle className="text-sm font-medium">
+            {isMarketGetLoading ? (
+              <Skeleton className="h-5 w-[75px]" />
+            ) : (
+              "Market"
+            )}
+          </CardTitle>
           <LineChart className="h-4 w-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
           <>
             <p className="mb-2 text-l font-bold">
-              {isMarketGetLoading ?
-                <Skeleton className="w-3 h-3 rounded-full inline-block mr-2" /> :
+              {isMarketGetLoading ? (
+                <Skeleton className="w-3 h-3 rounded-full inline-block mr-2" />
+              ) : (
                 <span
                   className={
                     market?.active
-                      ? 'animate-pulse inline-block w-3 h-3 mr-2 bg-green-600 rounded-full'
-                      : 'inline-block w-3 h-3 mr-2 bg-red-600 rounded-full'
+                      ? "animate-pulse inline-block w-3 h-3 mr-2 bg-green-600 rounded-full"
+                      : "inline-block w-3 h-3 mr-2 bg-red-600 rounded-full"
                   }
                 ></span>
-              }
+              )}
 
               <span className="font-mono">
-                {isMarketGetLoading ?
-                  <Skeleton className="h-3 w-[320px] inline-block" /> :
-                  market?.uuid ?? 'None'
-                }
+                {isMarketGetLoading ? (
+                  <Skeleton className="h-3 w-[320px] inline-block" />
+                ) : (
+                  (market?.uuid ?? "None")
+                )}
               </span>
             </p>
             <div className="mb-2 text-l">
-              {isMarketGetError ?
-                'The market has never been opened' :
-                isMarketGetLoading ?
-                  <Skeleton className="h-4 w-[320px] inline-block" /> :
-                  (market?.closed_at ? (
-                    <p>Closed {formatTimestamp(market?.closed_at || '')}</p>
-                  ) : (
-                    <p>Opened {formatTimestamp(market?.opened_at || '')}</p>
-                  ))
-              }
+              {isMarketGetError ? (
+                "The market has never been opened"
+              ) : isMarketGetLoading ? (
+                <Skeleton className="h-4 w-[320px] inline-block" />
+              ) : market?.closed_at ? (
+                <p>Closed {formatTimestamp(market?.closed_at || "")}</p>
+              ) : (
+                <p>Opened {formatTimestamp(market?.opened_at || "")}</p>
+              )}
             </div>
           </>
         </CardContent>
@@ -145,7 +165,11 @@ const Dashboard = () => {
           <Card key={stat.name}>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">
-                {stat.isLoading ? <Skeleton className="h-4 w-[60px]" /> : stat.name}
+                {stat.isLoading ? (
+                  <Skeleton className="h-4 w-[60px]" />
+                ) : (
+                  stat.name
+                )}
               </CardTitle>
               {stat.icon}
             </CardHeader>
@@ -158,7 +182,7 @@ const Dashboard = () => {
         ))}
       </div>
     </AdminLayout>
-  )
-}
+  );
+};
 
-export default Dashboard
+export default Dashboard;

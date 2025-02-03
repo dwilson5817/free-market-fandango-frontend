@@ -4,1752 +4,1761 @@
  */
 
 export interface paths {
-    "/auth": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        /** Request Access Token */
-        post: operations["request_access_token_auth_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+  "/auth": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/card": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Read Cards */
-        get: operations["read_cards_card_get"];
-        /** Update Card */
-        put: operations["update_card_card_put"];
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    get?: never;
+    put?: never;
+    /** Request Access Token */
+    post: operations["request_access_token_auth_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/card": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/card/{card_number}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Read Card */
-        get: operations["read_card_card__card_number__get"];
-        put?: never;
-        post?: never;
-        /** Delete Card */
-        delete: operations["delete_card_card__card_number__delete"];
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    /** Read Cards */
+    get: operations["read_cards_card_get"];
+    /** Update Card */
+    put: operations["update_card_card_put"];
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/card/{card_number}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/event": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Read Events */
-        get: operations["read_events_event_get"];
-        /** Create Event */
-        put: operations["create_event_event_put"];
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    /** Read Card */
+    get: operations["read_card_card__card_number__get"];
+    put?: never;
+    post?: never;
+    /** Delete Card */
+    delete: operations["delete_card_card__card_number__delete"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/event": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/event/{event_id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Read Event */
-        get: operations["read_event_event__event_id__get"];
-        put?: never;
-        post?: never;
-        /** Delete Event */
-        delete: operations["delete_event_event__event_id__delete"];
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    /** Read Events */
+    get: operations["read_events_event_get"];
+    /** Create Event */
+    put: operations["create_event_event_put"];
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/event/{event_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/market/{market_uuid}/history/{stock_code}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Read Price History For Stock */
-        get: operations["read_price_history_for_stock_market__market_uuid__history__stock_code__get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    /** Read Event */
+    get: operations["read_event_event__event_id__get"];
+    put?: never;
+    post?: never;
+    /** Delete Event */
+    delete: operations["delete_event_event__event_id__delete"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/market/{market_uuid}/history/{stock_code}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/market/{market_uuid}/history": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Read Price History */
-        get: operations["read_price_history_market__market_uuid__history_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    /** Read Price History For Stock */
+    get: operations["read_price_history_for_stock_market__market_uuid__history__stock_code__get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/market/{market_uuid}/history": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/market/{market_uuid}/purchase/{card_number}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Read Purchases For Card */
-        get: operations["read_purchases_for_card_market__market_uuid__purchase__card_number__get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    /** Read Price History */
+    get: operations["read_price_history_market__market_uuid__history_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/market/{market_uuid}/purchase/{card_number}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/market/{market_uuid}/purchase": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Read Purchases */
-        get: operations["read_purchases_market__market_uuid__purchase_get"];
-        put?: never;
-        /** Create Purchase */
-        post: operations["create_purchase_market__market_uuid__purchase_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    /** Read Purchases For Card */
+    get: operations["read_purchases_for_card_market__market_uuid__purchase__card_number__get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/market/{market_uuid}/purchase": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/market": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Read Active Market */
-        get: operations["read_active_market_market_get"];
-        put?: never;
-        /** Open Market */
-        post: operations["open_market_market_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    /** Read Purchases */
+    get: operations["read_purchases_market__market_uuid__purchase_get"];
+    put?: never;
+    /** Create Purchase */
+    post: operations["create_purchase_market__market_uuid__purchase_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/market": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/market/{market_uuid}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Read Market */
-        get: operations["read_market_market__market_uuid__get"];
-        put?: never;
-        post?: never;
-        /** Stop Market */
-        delete: operations["stop_market_market__market_uuid__delete"];
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    /** Read Active Market */
+    get: operations["read_active_market_market_get"];
+    put?: never;
+    /** Open Market */
+    post: operations["open_market_market_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/market/{market_uuid}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/market/{market_uuid}/price": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Read Market Prices */
-        get: operations["read_market_prices_market__market_uuid__price_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    /** Read Market */
+    get: operations["read_market_market__market_uuid__get"];
+    put?: never;
+    post?: never;
+    /** Stop Market */
+    delete: operations["stop_market_market__market_uuid__delete"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/market/{market_uuid}/price": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/market/{market_uuid}/balance": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Read Market Balances */
-        get: operations["read_market_balances_market__market_uuid__balance_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    /** Read Market Prices */
+    get: operations["read_market_prices_market__market_uuid__price_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/market/{market_uuid}/balance": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/settings": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Read Settings */
-        get: operations["read_settings_settings_get"];
-        /** Update Settings */
-        put: operations["update_settings_settings_put"];
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    /** Read Market Balances */
+    get: operations["read_market_balances_market__market_uuid__balance_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/settings": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/stock": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Read Stocks */
-        get: operations["read_stocks_stock_get"];
-        /** Create Stock */
-        put: operations["create_stock_stock_put"];
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    /** Read Settings */
+    get: operations["read_settings_settings_get"];
+    /** Update Settings */
+    put: operations["update_settings_settings_put"];
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/stock": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/stock/{stock_code}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Read Stock */
-        get: operations["read_stock_stock__stock_code__get"];
-        put?: never;
-        post?: never;
-        /** Delete Stock */
-        delete: operations["delete_stock_stock__stock_code__delete"];
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    /** Read Stocks */
+    get: operations["read_stocks_stock_get"];
+    /** Create Stock */
+    put: operations["create_stock_stock_put"];
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/stock/{stock_code}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/spotify/account": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Spotify Account Info */
-        get: operations["spotify_account_info_spotify_account_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    /** Read Stock */
+    get: operations["read_stock_stock__stock_code__get"];
+    put?: never;
+    post?: never;
+    /** Delete Stock */
+    delete: operations["delete_stock_stock__stock_code__delete"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/spotify/account": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/spotify/redirect": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Spotify Redirect For Authz */
-        get: operations["spotify_redirect_for_authz_spotify_redirect_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    /** Spotify Account Info */
+    get: operations["spotify_account_info_spotify_account_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/spotify/redirect": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/spotify/connect": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        /** Save Auth Token */
-        post: operations["save_auth_token_spotify_connect_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    /** Spotify Redirect For Authz */
+    get: operations["spotify_redirect_for_authz_spotify_redirect_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/spotify/connect": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/spotify/disconnect": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        /** Delete Auth Token */
-        post: operations["delete_auth_token_spotify_disconnect_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    get?: never;
+    put?: never;
+    /** Save Auth Token */
+    post: operations["save_auth_token_spotify_connect_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/spotify/disconnect": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/spotify/currently_playing": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Get Spotify Currently Playing */
-        get: operations["get_spotify_currently_playing_spotify_currently_playing_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    get?: never;
+    put?: never;
+    /** Delete Auth Token */
+    post: operations["delete_auth_token_spotify_disconnect_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/spotify/currently_playing": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
+    /** Get Spotify Currently Playing */
+    get: operations["get_spotify_currently_playing_spotify_currently_playing_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
 }
 export type webhooks = Record<string, never>;
 export interface components {
-    schemas: {
-        /** APIError */
-        APIError: {
-            /** Message */
-            message: string;
-        };
-        /** Auth */
-        Auth: {
-            /** Password */
-            password: string;
-        };
-        /** Card */
-        "Card-Input": {
-            /** Card Number */
-            card_number: number;
-            /** Name */
-            name: string;
-            /** Balance */
-            balance: number | string;
-        };
-        /** Card */
-        "Card-Output": {
-            /** Card Number */
-            card_number: number;
-            /** Name */
-            name: string;
-            /** Balance */
-            balance: string;
-        };
-        /** EventIn */
-        EventIn: {
-            /** Title */
-            title: string;
-            /** Body */
-            body: string;
-            /** Breaking */
-            breaking: boolean;
-            /** Video Url */
-            video_url?: string | null;
-            /** Change Min */
-            change_min: number | string;
-            /** Change Max */
-            change_max: number | string;
-            /**
-             * Tags
-             * @default []
-             */
-            tags: string[];
-        };
-        /** EventOut */
-        EventOut: {
-            /** Title */
-            title: string;
-            /** Body */
-            body: string;
-            /** Breaking */
-            breaking: boolean;
-            /** Video Url */
-            video_url?: string | null;
-            /** Change Min */
-            change_min: string;
-            /** Change Max */
-            change_max: string;
-            /**
-             * Tags
-             * @default []
-             */
-            tags: string[];
-            /**
-             * Uuid
-             * Format: uuid
-             */
-            uuid?: string;
-        };
-        /** HTTPValidationError */
-        HTTPValidationError: {
-            /** Detail */
-            detail?: components["schemas"]["ValidationError"][];
-        };
-        /** Market */
-        Market: {
-            /**
-             * Uuid
-             * Format: uuid
-             */
-            uuid?: string;
-            /**
-             * Opened At
-             * Format: date-time
-             */
-            opened_at?: string;
-            /** Closed At */
-            closed_at?: string | null;
-            /** Current Event */
-            current_event?: string | null;
-            /** Active */
-            readonly active: boolean;
-        };
-        /** MarketBalance */
-        MarketBalance: {
-            /** Card Number */
-            card_number: number;
-            /** Balance */
-            balance: string;
-        };
-        /** MarketPrice */
-        MarketPrice: {
-            /** Stock Code */
-            stock_code: string;
-            /** Price */
-            price: string;
-        };
-        /** PriceChange */
-        PriceChange: {
-            /** Stock Code */
-            stock_code: string;
-            /** Previous Price */
-            previous_price: string;
-            /** Reason */
-            reason: string;
-            /**
-             * Timestamp
-             * Format: date-time
-             */
-            timestamp: string;
-        };
-        /** PurchaseIn */
-        PurchaseIn: {
-            /** Price */
-            price: number | string;
-            /** Stock Code */
-            stock_code: string;
-            /** Card Number */
-            card_number: number;
-        };
-        /** PurchaseOut */
-        PurchaseOut: {
-            /** Price */
-            price: string;
-            /** Stock Code */
-            stock_code: string;
-            /** Card Number */
-            card_number: number;
-            /**
-             * Previous Balance
-             * @default 0
-             */
-            previous_balance: string;
-            /**
-             * Timestamp
-             * Format: date-time
-             */
-            timestamp?: string;
-        };
-        /** Setting */
-        Setting: {
-            key: components["schemas"]["Settings"];
-            /** Value */
-            value: number;
-        };
-        /**
-         * Settings
-         * @enum {string}
-         */
-        Settings: "NewsMinDuration" | "NewsMaxDuration" | "StockMaxPercentLoss" | "StockPurchaseMinIncrease" | "StockPurchaseMaxIncrease" | "StockNoPurchaseMinLoss" | "StockNoPurchaseMaxLoss" | "StockNoPurchaseLossTime" | "MarketCrashLoss";
-        /** SpotifyAccountResponse */
-        SpotifyAccountResponse: {
-            /** Display Name */
-            display_name: string;
-            /** Profile Picture */
-            profile_picture: string;
-        };
-        /** SpotifyConnectRequest */
-        SpotifyConnectRequest: {
-            /** Auth Code */
-            auth_code: string;
-        };
-        /** SpotifyCurrentlyPlayingResponse */
-        SpotifyCurrentlyPlayingResponse: {
-            /** Title */
-            title: string;
-            /** Album */
-            album: string;
-            /** Artists */
-            artists: string;
-            /** Artwork Url */
-            artwork_url: string;
-            /** Progress Ms */
-            progress_ms: number;
-            /** Duration Ms */
-            duration_ms: number;
-        };
-        /** SpotifyRedirectResponse */
-        SpotifyRedirectResponse: {
-            /** Redirect Url */
-            redirect_url: string;
-        };
-        /** Stock */
-        "Stock-Input": {
-            /** Code */
-            code: string;
-            /** Name */
-            name: string;
-            /**
-             * Tags
-             * @default []
-             */
-            tags: string[];
-            /** Initial Price */
-            initial_price: number | string;
-        };
-        /** Stock */
-        "Stock-Output": {
-            /** Code */
-            code: string;
-            /** Name */
-            name: string;
-            /**
-             * Tags
-             * @default []
-             */
-            tags: string[];
-            /** Initial Price */
-            initial_price: string;
-        };
-        /** Token */
-        Token: {
-            /** Access Token */
-            access_token: string;
-            /**
-             * Token Type
-             * @default bearer
-             */
-            token_type: string;
-        };
-        /** ValidationError */
-        ValidationError: {
-            /** Location */
-            loc: (string | number)[];
-            /** Message */
-            msg: string;
-            /** Error Type */
-            type: string;
-        };
+  schemas: {
+    /** APIError */
+    APIError: {
+      /** Message */
+      message: string;
     };
-    responses: never;
-    parameters: never;
-    requestBodies: never;
-    headers: never;
-    pathItems: never;
+    /** Auth */
+    Auth: {
+      /** Password */
+      password: string;
+    };
+    /** Card */
+    "Card-Input": {
+      /** Card Number */
+      card_number: number;
+      /** Name */
+      name: string;
+      /** Balance */
+      balance: number | string;
+    };
+    /** Card */
+    "Card-Output": {
+      /** Card Number */
+      card_number: number;
+      /** Name */
+      name: string;
+      /** Balance */
+      balance: string;
+    };
+    /** EventIn */
+    EventIn: {
+      /** Title */
+      title: string;
+      /** Body */
+      body: string;
+      /** Breaking */
+      breaking: boolean;
+      /** Video Url */
+      video_url?: string | null;
+      /** Change Min */
+      change_min: number | string;
+      /** Change Max */
+      change_max: number | string;
+      /**
+       * Tags
+       * @default []
+       */
+      tags: string[];
+    };
+    /** EventOut */
+    EventOut: {
+      /** Title */
+      title: string;
+      /** Body */
+      body: string;
+      /** Breaking */
+      breaking: boolean;
+      /** Video Url */
+      video_url?: string | null;
+      /** Change Min */
+      change_min: string;
+      /** Change Max */
+      change_max: string;
+      /**
+       * Tags
+       * @default []
+       */
+      tags: string[];
+      /**
+       * Uuid
+       * Format: uuid
+       */
+      uuid?: string;
+    };
+    /** HTTPValidationError */
+    HTTPValidationError: {
+      /** Detail */
+      detail?: components["schemas"]["ValidationError"][];
+    };
+    /** Market */
+    Market: {
+      /**
+       * Uuid
+       * Format: uuid
+       */
+      uuid?: string;
+      /**
+       * Opened At
+       * Format: date-time
+       */
+      opened_at?: string;
+      /** Closed At */
+      closed_at?: string | null;
+      /** Current Event */
+      current_event?: string | null;
+      /** Active */
+      readonly active: boolean;
+    };
+    /** MarketBalance */
+    MarketBalance: {
+      /** Card Number */
+      card_number: number;
+      /** Balance */
+      balance: string;
+    };
+    /** MarketPrice */
+    MarketPrice: {
+      /** Stock Code */
+      stock_code: string;
+      /** Price */
+      price: string;
+    };
+    /** PriceChange */
+    PriceChange: {
+      /** Stock Code */
+      stock_code: string;
+      /** Previous Price */
+      previous_price: string;
+      /** Reason */
+      reason: string;
+      /**
+       * Timestamp
+       * Format: date-time
+       */
+      timestamp: string;
+    };
+    /** PurchaseIn */
+    PurchaseIn: {
+      /** Price */
+      price: number | string;
+      /** Stock Code */
+      stock_code: string;
+      /** Card Number */
+      card_number: number;
+    };
+    /** PurchaseOut */
+    PurchaseOut: {
+      /** Price */
+      price: string;
+      /** Stock Code */
+      stock_code: string;
+      /** Card Number */
+      card_number: number;
+      /**
+       * Previous Balance
+       * @default 0
+       */
+      previous_balance: string;
+      /**
+       * Timestamp
+       * Format: date-time
+       */
+      timestamp?: string;
+    };
+    /** Setting */
+    Setting: {
+      key: components["schemas"]["Settings"];
+      /** Value */
+      value: number;
+    };
+    /**
+     * Settings
+     * @enum {string}
+     */
+    Settings:
+      | "NewsMinDuration"
+      | "NewsMaxDuration"
+      | "StockMaxPercentLoss"
+      | "StockPurchaseMinIncrease"
+      | "StockPurchaseMaxIncrease"
+      | "StockNoPurchaseMinLoss"
+      | "StockNoPurchaseMaxLoss"
+      | "StockNoPurchaseLossTime"
+      | "MarketCrashLoss";
+    /** SpotifyAccountResponse */
+    SpotifyAccountResponse: {
+      /** Display Name */
+      display_name: string;
+      /** Profile Picture */
+      profile_picture: string;
+    };
+    /** SpotifyConnectRequest */
+    SpotifyConnectRequest: {
+      /** Auth Code */
+      auth_code: string;
+    };
+    /** SpotifyCurrentlyPlayingResponse */
+    SpotifyCurrentlyPlayingResponse: {
+      /** Title */
+      title: string;
+      /** Album */
+      album: string;
+      /** Artists */
+      artists: string;
+      /** Artwork Url */
+      artwork_url: string;
+      /** Progress Ms */
+      progress_ms: number;
+      /** Duration Ms */
+      duration_ms: number;
+    };
+    /** SpotifyRedirectResponse */
+    SpotifyRedirectResponse: {
+      /** Redirect Url */
+      redirect_url: string;
+    };
+    /** Stock */
+    "Stock-Input": {
+      /** Code */
+      code: string;
+      /** Name */
+      name: string;
+      /**
+       * Tags
+       * @default []
+       */
+      tags: string[];
+      /** Initial Price */
+      initial_price: number | string;
+    };
+    /** Stock */
+    "Stock-Output": {
+      /** Code */
+      code: string;
+      /** Name */
+      name: string;
+      /**
+       * Tags
+       * @default []
+       */
+      tags: string[];
+      /** Initial Price */
+      initial_price: string;
+    };
+    /** Token */
+    Token: {
+      /** Access Token */
+      access_token: string;
+      /**
+       * Token Type
+       * @default bearer
+       */
+      token_type: string;
+    };
+    /** ValidationError */
+    ValidationError: {
+      /** Location */
+      loc: (string | number)[];
+      /** Message */
+      msg: string;
+      /** Error Type */
+      type: string;
+    };
+  };
+  responses: never;
+  parameters: never;
+  requestBodies: never;
+  headers: never;
+  pathItems: never;
 }
 export type $defs = Record<string, never>;
 export interface operations {
-    request_access_token_auth_post: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["Auth"];
-            };
-        };
-        responses: {
-            /** @description Successful Response */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["Token"];
-                };
-            };
-            /** @description Incorrect authentication details provided. */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["APIError"];
-                };
-            };
-            /** @description Validation Error */
-            422: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["HTTPValidationError"];
-                };
-            };
-        };
+  request_access_token_auth_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    read_cards_card_get: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful Response */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["Card-Output"][];
-                };
-            };
-        };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["Auth"];
+      };
     };
-    update_card_card_put: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
         };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["Card-Input"];
-            };
+        content: {
+          "application/json": components["schemas"]["Token"];
         };
-        responses: {
-            /** @description Successful Response */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["Card-Output"];
-                };
-            };
-            /** @description Failed to validate credentials. */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["APIError"];
-                };
-            };
-            /** @description Card number does not exist */
-            404: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["APIError"];
-                };
-            };
-            /** @description Validation Error */
-            422: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["HTTPValidationError"];
-                };
-            };
+      };
+      /** @description Incorrect authentication details provided. */
+      401: {
+        headers: {
+          [name: string]: unknown;
         };
+        content: {
+          "application/json": components["schemas"]["APIError"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
     };
-    read_card_card__card_number__get: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                card_number: number;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful Response */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["Card-Output"];
-                };
-            };
-            /** @description Card number does not exist */
-            404: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["APIError"];
-                };
-            };
-            /** @description Validation Error */
-            422: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["HTTPValidationError"];
-                };
-            };
-        };
+  };
+  read_cards_card_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    delete_card_card__card_number__delete: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                card_number: number;
-            };
-            cookie?: never;
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
         };
-        requestBody?: never;
-        responses: {
-            /** @description Successful Response */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": unknown;
-                };
-            };
-            /** @description Failed to validate credentials. */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["APIError"];
-                };
-            };
-            /** @description Validation Error */
-            422: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["HTTPValidationError"];
-                };
-            };
+        content: {
+          "application/json": components["schemas"]["Card-Output"][];
         };
+      };
     };
-    read_events_event_get: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful Response */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["EventOut"][];
-                };
-            };
-        };
+  };
+  update_card_card_put: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    create_event_event_put: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["EventIn"];
-            };
-        };
-        responses: {
-            /** @description Successful Response */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["EventOut"];
-                };
-            };
-            /** @description Failed to validate credentials. */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["APIError"];
-                };
-            };
-            /** @description Validation Error */
-            422: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["HTTPValidationError"];
-                };
-            };
-        };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["Card-Input"];
+      };
     };
-    read_event_event__event_id__get: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                event_id: string;
-            };
-            cookie?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
         };
-        requestBody?: never;
-        responses: {
-            /** @description Successful Response */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["EventOut"][];
-                };
-            };
-            /** @description Event ID does not exist. */
-            404: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["APIError"];
-                };
-            };
-            /** @description Validation Error */
-            422: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["HTTPValidationError"];
-                };
-            };
+        content: {
+          "application/json": components["schemas"]["Card-Output"];
         };
+      };
+      /** @description Failed to validate credentials. */
+      401: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["APIError"];
+        };
+      };
+      /** @description Card number does not exist */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["APIError"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
     };
-    delete_event_event__event_id__delete: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                event_id: string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful Response */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description Failed to validate credentials. */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["APIError"];
-                };
-            };
-            /** @description Validation Error */
-            422: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["HTTPValidationError"];
-                };
-            };
-        };
+  };
+  read_card_card__card_number__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        card_number: number;
+      };
+      cookie?: never;
     };
-    read_price_history_for_stock_market__market_uuid__history__stock_code__get: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                market_uuid: string;
-                stock_code: string;
-            };
-            cookie?: never;
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
         };
-        requestBody?: never;
-        responses: {
-            /** @description Successful Response */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["PriceChange"][];
-                };
-            };
-            /** @description Validation Error */
-            422: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["HTTPValidationError"];
-                };
-            };
+        content: {
+          "application/json": components["schemas"]["Card-Output"];
         };
+      };
+      /** @description Card number does not exist */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["APIError"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
     };
-    read_price_history_market__market_uuid__history_get: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                market_uuid: string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful Response */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["PriceChange"][];
-                };
-            };
-            /** @description Validation Error */
-            422: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["HTTPValidationError"];
-                };
-            };
-        };
+  };
+  delete_card_card__card_number__delete: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        card_number: number;
+      };
+      cookie?: never;
     };
-    read_purchases_for_card_market__market_uuid__purchase__card_number__get: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                market_uuid: string;
-                card_number: number;
-            };
-            cookie?: never;
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
         };
-        requestBody?: never;
-        responses: {
-            /** @description Successful Response */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["PurchaseOut"][];
-                };
-            };
-            /** @description Bad Request */
-            400: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description Not Found */
-            404: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description Validation Error */
-            422: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["HTTPValidationError"];
-                };
-            };
+        content: {
+          "application/json": unknown;
         };
+      };
+      /** @description Failed to validate credentials. */
+      401: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["APIError"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
     };
-    read_purchases_market__market_uuid__purchase_get: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                market_uuid: string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful Response */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["PurchaseOut"][];
-                };
-            };
-            /** @description Bad Request */
-            400: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description Not Found */
-            404: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description Validation Error */
-            422: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["HTTPValidationError"];
-                };
-            };
-        };
+  };
+  read_events_event_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    create_purchase_market__market_uuid__purchase_post: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                market_uuid: string;
-            };
-            cookie?: never;
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
         };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["PurchaseIn"];
-            };
+        content: {
+          "application/json": components["schemas"]["EventOut"][];
         };
-        responses: {
-            /** @description Successful Response */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["PurchaseOut"];
-                };
-            };
-            /** @description Market is closed, stock price has changed or card has insufficient balance. */
-            400: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["APIError"];
-                };
-            };
-            /** @description Failed to validate credentials. */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["APIError"];
-                };
-            };
-            /** @description Market, stock or card does not exist. */
-            404: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["APIError"];
-                };
-            };
-            /** @description Validation Error */
-            422: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["HTTPValidationError"];
-                };
-            };
-        };
+      };
     };
-    read_active_market_market_get: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful Response */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["Market"];
-                };
-            };
-            /** @description A market has never been opened */
-            404: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["APIError"];
-                };
-            };
-        };
+  };
+  create_event_event_put: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    open_market_market_post: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful Response */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["Market"];
-                };
-            };
-            /** @description A market is already open or no cards, events or stocks have been created. */
-            400: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["APIError"];
-                };
-            };
-            /** @description Failed to validate credentials. */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["APIError"];
-                };
-            };
-        };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["EventIn"];
+      };
     };
-    read_market_market__market_uuid__get: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                market_uuid: string;
-            };
-            cookie?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
         };
-        requestBody?: never;
-        responses: {
-            /** @description Successful Response */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["Market"];
-                };
-            };
-            /** @description The requested market does not exist. */
-            404: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["APIError"];
-                };
-            };
-            /** @description Validation Error */
-            422: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["HTTPValidationError"];
-                };
-            };
+        content: {
+          "application/json": components["schemas"]["EventOut"];
         };
+      };
+      /** @description Failed to validate credentials. */
+      401: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["APIError"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
     };
-    stop_market_market__market_uuid__delete: {
-        parameters: {
-            query?: {
-                ends_in?: number | null;
-            };
-            header?: never;
-            path: {
-                market_uuid: string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful Response */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["Market"];
-                };
-            };
-            /** @description The market has already been closed. */
-            400: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["APIError"];
-                };
-            };
-            /** @description Failed to validate credentials. */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["APIError"];
-                };
-            };
-            /** @description The requested market does not exist. */
-            404: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["APIError"];
-                };
-            };
-            /** @description Validation Error */
-            422: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["HTTPValidationError"];
-                };
-            };
-        };
+  };
+  read_event_event__event_id__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        event_id: string;
+      };
+      cookie?: never;
     };
-    read_market_prices_market__market_uuid__price_get: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                market_uuid: string;
-            };
-            cookie?: never;
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
         };
-        requestBody?: never;
-        responses: {
-            /** @description Successful Response */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["MarketPrice"][];
-                };
-            };
-            /** @description Validation Error */
-            422: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["HTTPValidationError"];
-                };
-            };
+        content: {
+          "application/json": components["schemas"]["EventOut"][];
         };
+      };
+      /** @description Event ID does not exist. */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["APIError"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
     };
-    read_market_balances_market__market_uuid__balance_get: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                market_uuid: string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful Response */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["MarketBalance"][];
-                };
-            };
-            /** @description Validation Error */
-            422: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["HTTPValidationError"];
-                };
-            };
-        };
+  };
+  delete_event_event__event_id__delete: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        event_id: string;
+      };
+      cookie?: never;
     };
-    read_settings_settings_get: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      204: {
+        headers: {
+          [name: string]: unknown;
         };
-        requestBody?: never;
-        responses: {
-            /** @description Successful Response */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["Setting"][];
-                };
-            };
-            /** @description Failed to validate credentials. */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["APIError"];
-                };
-            };
+        content?: never;
+      };
+      /** @description Failed to validate credentials. */
+      401: {
+        headers: {
+          [name: string]: unknown;
         };
+        content: {
+          "application/json": components["schemas"]["APIError"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
     };
-    update_settings_settings_put: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["Setting"][];
-            };
-        };
-        responses: {
-            /** @description Successful Response */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["Setting"][];
-                };
-            };
-            /** @description Failed to validate credentials. */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["APIError"];
-                };
-            };
-            /** @description Validation Error */
-            422: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["HTTPValidationError"];
-                };
-            };
-        };
+  };
+  read_price_history_for_stock_market__market_uuid__history__stock_code__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        market_uuid: string;
+        stock_code: string;
+      };
+      cookie?: never;
     };
-    read_stocks_stock_get: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
         };
-        requestBody?: never;
-        responses: {
-            /** @description Successful Response */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["Stock-Output"][];
-                };
-            };
+        content: {
+          "application/json": components["schemas"]["PriceChange"][];
         };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
     };
-    create_stock_stock_put: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["Stock-Input"];
-            };
-        };
-        responses: {
-            /** @description Successful Response */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["Stock-Output"];
-                };
-            };
-            /** @description Failed to validate credentials. */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["APIError"];
-                };
-            };
-            /** @description Validation Error */
-            422: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["HTTPValidationError"];
-                };
-            };
-        };
+  };
+  read_price_history_market__market_uuid__history_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        market_uuid: string;
+      };
+      cookie?: never;
     };
-    read_stock_stock__stock_code__get: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                stock_code: string;
-            };
-            cookie?: never;
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
         };
-        requestBody?: never;
-        responses: {
-            /** @description Successful Response */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["Stock-Output"];
-                };
-            };
-            /** @description Failed to validate credentials. */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["APIError"];
-                };
-            };
-            /** @description Stock does not exist. */
-            404: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["APIError"];
-                };
-            };
-            /** @description Validation Error */
-            422: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["HTTPValidationError"];
-                };
-            };
+        content: {
+          "application/json": components["schemas"]["PriceChange"][];
         };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
     };
-    delete_stock_stock__stock_code__delete: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                stock_code: string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful Response */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description Failed to validate credentials. */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["APIError"];
-                };
-            };
-            /** @description Validation Error */
-            422: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["HTTPValidationError"];
-                };
-            };
-        };
+  };
+  read_purchases_for_card_market__market_uuid__purchase__card_number__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        market_uuid: string;
+        card_number: number;
+      };
+      cookie?: never;
     };
-    spotify_account_info_spotify_account_get: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
         };
-        requestBody?: never;
-        responses: {
-            /** @description Successful Response */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["SpotifyAccountResponse"];
-                };
-            };
-            /** @description No account connected, connect an account first */
-            400: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["APIError"];
-                };
-            };
+        content: {
+          "application/json": components["schemas"]["PurchaseOut"][];
         };
+      };
+      /** @description Bad Request */
+      400: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Not Found */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
     };
-    spotify_redirect_for_authz_spotify_redirect_get: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful Response */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["SpotifyRedirectResponse"];
-                };
-            };
-        };
+  };
+  read_purchases_market__market_uuid__purchase_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        market_uuid: string;
+      };
+      cookie?: never;
     };
-    save_auth_token_spotify_connect_post: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
         };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["SpotifyConnectRequest"];
-            };
+        content: {
+          "application/json": components["schemas"]["PurchaseOut"][];
         };
-        responses: {
-            /** @description Successful Response */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description Validation Error */
-            422: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["HTTPValidationError"];
-                };
-            };
+      };
+      /** @description Bad Request */
+      400: {
+        headers: {
+          [name: string]: unknown;
         };
+        content?: never;
+      };
+      /** @description Not Found */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
     };
-    delete_auth_token_spotify_disconnect_post: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful Response */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-        };
+  };
+  create_purchase_market__market_uuid__purchase_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        market_uuid: string;
+      };
+      cookie?: never;
     };
-    get_spotify_currently_playing_spotify_currently_playing_get: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful Response */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["SpotifyCurrentlyPlayingResponse"];
-                };
-            };
-            /** @description No account connected or nothing is playing */
-            400: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["APIError"];
-                };
-            };
-        };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["PurchaseIn"];
+      };
     };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["PurchaseOut"];
+        };
+      };
+      /** @description Market is closed, stock price has changed or card has insufficient balance. */
+      400: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["APIError"];
+        };
+      };
+      /** @description Failed to validate credentials. */
+      401: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["APIError"];
+        };
+      };
+      /** @description Market, stock or card does not exist. */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["APIError"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  read_active_market_market_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Market"];
+        };
+      };
+      /** @description A market has never been opened */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["APIError"];
+        };
+      };
+    };
+  };
+  open_market_market_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Market"];
+        };
+      };
+      /** @description A market is already open or no cards, events or stocks have been created. */
+      400: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["APIError"];
+        };
+      };
+      /** @description Failed to validate credentials. */
+      401: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["APIError"];
+        };
+      };
+    };
+  };
+  read_market_market__market_uuid__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        market_uuid: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Market"];
+        };
+      };
+      /** @description The requested market does not exist. */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["APIError"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  stop_market_market__market_uuid__delete: {
+    parameters: {
+      query?: {
+        ends_in?: number | null;
+      };
+      header?: never;
+      path: {
+        market_uuid: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Market"];
+        };
+      };
+      /** @description The market has already been closed. */
+      400: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["APIError"];
+        };
+      };
+      /** @description Failed to validate credentials. */
+      401: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["APIError"];
+        };
+      };
+      /** @description The requested market does not exist. */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["APIError"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  read_market_prices_market__market_uuid__price_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        market_uuid: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["MarketPrice"][];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  read_market_balances_market__market_uuid__balance_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        market_uuid: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["MarketBalance"][];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  read_settings_settings_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Setting"][];
+        };
+      };
+      /** @description Failed to validate credentials. */
+      401: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["APIError"];
+        };
+      };
+    };
+  };
+  update_settings_settings_put: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["Setting"][];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Setting"][];
+        };
+      };
+      /** @description Failed to validate credentials. */
+      401: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["APIError"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  read_stocks_stock_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Stock-Output"][];
+        };
+      };
+    };
+  };
+  create_stock_stock_put: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["Stock-Input"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Stock-Output"];
+        };
+      };
+      /** @description Failed to validate credentials. */
+      401: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["APIError"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  read_stock_stock__stock_code__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        stock_code: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Stock-Output"];
+        };
+      };
+      /** @description Failed to validate credentials. */
+      401: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["APIError"];
+        };
+      };
+      /** @description Stock does not exist. */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["APIError"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  delete_stock_stock__stock_code__delete: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        stock_code: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Failed to validate credentials. */
+      401: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["APIError"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  spotify_account_info_spotify_account_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["SpotifyAccountResponse"];
+        };
+      };
+      /** @description No account connected, connect an account first */
+      400: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["APIError"];
+        };
+      };
+    };
+  };
+  spotify_redirect_for_authz_spotify_redirect_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["SpotifyRedirectResponse"];
+        };
+      };
+    };
+  };
+  save_auth_token_spotify_connect_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["SpotifyConnectRequest"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  delete_auth_token_spotify_disconnect_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  get_spotify_currently_playing_spotify_currently_playing_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["SpotifyCurrentlyPlayingResponse"];
+        };
+      };
+      /** @description No account connected or nothing is playing */
+      400: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["APIError"];
+        };
+      };
+    };
+  };
 }

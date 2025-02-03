@@ -1,18 +1,25 @@
 import {
-  AlertDialog, AlertDialogAction, AlertDialogCancel,
-  AlertDialogContent, AlertDialogDescription, AlertDialogFooter,
-  AlertDialogHeader, AlertDialogTitle,
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
   AlertDialogTrigger,
-} from '@/components/ui/alert-dialog.tsx'
-import { Button } from '@/components/ui/button.tsx'
-import { Trash2 } from 'lucide-react'
-import { PropsWithChildren } from 'react'
+} from "@/components/ui/alert-dialog.tsx";
+import { Button } from "@/components/ui/button.tsx";
+import { Trash2 } from "lucide-react";
+import { PropsWithChildren } from "react";
 
 interface DeleteResourceProps {
-  onConfirm: () => void
+  onConfirm: () => void;
 }
 
-export const DeleteResource = (props: PropsWithChildren<DeleteResourceProps>) => {
+export const DeleteResource = (
+  props: PropsWithChildren<DeleteResourceProps>,
+) => {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
@@ -24,19 +31,15 @@ export const DeleteResource = (props: PropsWithChildren<DeleteResourceProps>) =>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Are you sure?</AlertDialogTitle>
-          <AlertDialogDescription>
-            {props.children}
-          </AlertDialogDescription>
+          <AlertDialogDescription>{props.children}</AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction
-            onClick={() => props.onConfirm()}
-          >
+          <AlertDialogAction onClick={() => props.onConfirm()}>
             Delete
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
-  )
-}
+  );
+};

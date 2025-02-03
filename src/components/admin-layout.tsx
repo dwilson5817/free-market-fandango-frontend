@@ -1,27 +1,30 @@
-import { SidebarTrigger } from '@/components/ui/sidebar.tsx'
-import { Separator } from '@/components/ui/separator.tsx'
+import { SidebarTrigger } from "@/components/ui/sidebar.tsx";
+import { Separator } from "@/components/ui/separator.tsx";
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
-  BreadcrumbList, BreadcrumbPage,
+  BreadcrumbList,
+  BreadcrumbPage,
   BreadcrumbSeparator,
-} from '@/components/ui/breadcrumb.tsx'
-import { Link } from 'react-router'
-import { PropsWithChildren, ReactNode } from 'react'
-import { Button } from '@/components/ui/button.tsx'
-import { RefreshCcw } from 'lucide-react'
-import { LoadingSpinner } from '@/components/loading-spinner.tsx'
+} from "@/components/ui/breadcrumb.tsx";
+import { Link } from "react-router";
+import { PropsWithChildren, ReactNode } from "react";
+import { Button } from "@/components/ui/button.tsx";
+import { RefreshCcw } from "lucide-react";
+import { LoadingSpinner } from "@/components/loading-spinner.tsx";
 
 interface AdminBreadcrumbsProps {
-  pageName: string,
-  actions?: ReactNode
-  isLoading?: boolean
-  isFetching?: boolean
-  onRefreshClicked?: () => void
+  pageName: string;
+  actions?: ReactNode;
+  isLoading?: boolean;
+  isFetching?: boolean;
+  onRefreshClicked?: () => void;
 }
 
-export const AdminLayout = (props: PropsWithChildren<AdminBreadcrumbsProps>) => {
+export const AdminLayout = (
+  props: PropsWithChildren<AdminBreadcrumbsProps>,
+) => {
   return (
     <>
       <header className="flex h-16 shrink-0 items-center gap-2">
@@ -32,9 +35,7 @@ export const AdminLayout = (props: PropsWithChildren<AdminBreadcrumbsProps>) => 
             <BreadcrumbList>
               <BreadcrumbItem className="hidden md:block">
                 <BreadcrumbLink asChild>
-                  <Link to="/admin">
-                    Admin
-                  </Link>
+                  <Link to="/admin">Admin</Link>
                 </BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator className="hidden md:block" />
@@ -61,7 +62,8 @@ export const AdminLayout = (props: PropsWithChildren<AdminBreadcrumbsProps>) => 
                 className="my-auto ml-2"
               >
                 <RefreshCcw
-                  className={`h-4 w-4 ${props.isFetching ? 'animate-spin' : ''}`} />
+                  className={`h-4 w-4 ${props.isFetching ? "animate-spin" : ""}`}
+                />
               </Button>
             )}
           </div>
@@ -70,5 +72,5 @@ export const AdminLayout = (props: PropsWithChildren<AdminBreadcrumbsProps>) => 
         {props.isLoading ? <LoadingSpinner /> : props.children}
       </div>
     </>
-  )
-}
+  );
+};

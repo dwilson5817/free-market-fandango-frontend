@@ -1,8 +1,8 @@
-import { z } from 'zod'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useState } from 'react'
-import { Plus } from 'lucide-react'
+import { z } from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
+import { Plus } from "lucide-react";
 import {
   Sheet,
   SheetContent,
@@ -10,8 +10,8 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from '@/components/ui/sheet'
-import { Input } from '@/components/ui/input.tsx'
+} from "@/components/ui/sheet";
+import { Input } from "@/components/ui/input.tsx";
 import {
   Form,
   FormControl,
@@ -20,43 +20,43 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form.tsx'
-import { Button } from '@/components/ui/button.tsx'
-import { useStockCreate } from '@/hooks/data/use-stock-create'
-import { Tag, TagInput } from 'emblor'
+} from "@/components/ui/form.tsx";
+import { Button } from "@/components/ui/button.tsx";
+import { useStockCreate } from "@/hooks/data/use-stock-create";
+import { Tag, TagInput } from "emblor";
 
 const formSchema = z.object({
   code: z.string(),
   name: z
     .string()
-    .min(3, 'Too short')
-    .max(255, 'Name cannot be longer than 255'),
+    .min(3, "Too short")
+    .max(255, "Name cannot be longer than 255"),
   initial_price: z.number(),
   tags: z.array(
     z.object({
       id: z.string(),
       text: z.string(),
-    })
+    }),
   ),
-})
+});
 
 export function CreateStockForm() {
-  const [activeTagIndex, setActiveTagIndex] = useState<number | null>(null)
+  const [activeTagIndex, setActiveTagIndex] = useState<number | null>(null);
 
-  const [open, setOpen] = useState(false)
-  const [tags, setTags] = useState<Tag[]>([])
+  const [open, setOpen] = useState(false);
+  const [tags, setTags] = useState<Tag[]>([]);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-  })
+  });
 
   const { mutate } = useStockCreate({
     onSuccess: () => {
-      setOpen(false)
+      setOpen(false);
 
-      form.reset()
-    }
-  })
+      form.reset();
+    },
+  });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     mutate({
@@ -64,7 +64,7 @@ export function CreateStockForm() {
         ...values,
         tags: values.tags.flatMap(({ text }) => text),
       },
-    })
+    });
   }
 
   return (
@@ -125,7 +125,7 @@ export function CreateStockForm() {
                         <Input
                           type="number"
                           {...field}
-                          {...form.register('initial_price', {
+                          {...form.register("initial_price", {
                             valueAsNumber: true,
                           })}
                         />
@@ -148,13 +148,13 @@ export function CreateStockForm() {
                           {...field}
                           tags={tags}
                           setTags={(newTags) => {
-                            setTags(newTags)
-                            form.setValue('tags', newTags as [Tag, ...Tag[]])
+                            setTags(newTags);
+                            form.setValue("tags", newTags as [Tag, ...Tag[]]);
                           }}
                           activeTagIndex={activeTagIndex}
                           setActiveTagIndex={setActiveTagIndex}
                           inlineTags={false}
-                          inputFieldPosition={'top'}
+                          inputFieldPosition={"top"}
                         />
                       </FormControl>
                       <FormDescription>
@@ -176,5 +176,5 @@ export function CreateStockForm() {
         </Form>
       </SheetContent>
     </Sheet>
-  )
+  );
 }

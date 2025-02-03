@@ -1,16 +1,13 @@
-import { useApi } from '@/hooks/use-api'
-import { useQueryClient } from '@tanstack/react-query'
+import { useApi } from "@/hooks/use-api";
+import { useQueryClient } from "@tanstack/react-query";
 
-const METHOD = 'get'
-const PATH = '/event'
+const METHOD = "get";
+const PATH = "/event";
 
 export function useEventsGet() {
-  const { useQuery } = useApi()
+  const { useQuery } = useApi();
 
-  return useQuery(
-    METHOD,
-    PATH
-  )
+  return useQuery(METHOD, PATH);
 }
 
 export function useInvalidateEventsGet() {
@@ -19,8 +16,8 @@ export function useInvalidateEventsGet() {
   const invalidateCache = async () => {
     await queryClient.invalidateQueries({
       queryKey: [METHOD, PATH, undefined],
-    })
-  }
+    });
+  };
 
-  return { invalidateCache }
+  return { invalidateCache };
 }

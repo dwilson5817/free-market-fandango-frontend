@@ -1,12 +1,12 @@
-import { AdminLayout } from '@/components/admin-layout.tsx'
-import { Link, useSearchParams } from 'react-router'
-import { useSpotifyDisconnectPost } from '@/hooks/data/use-spotify-disconnect-post.ts'
-import { useSpotifyConnectPost } from '@/hooks/data/use-spotify-connect-post.ts'
-import { useSpotifyAccountGet } from '@/hooks/data/use-spotify-account-get.ts'
-import { useSpotifyRedirectGet } from '@/hooks/data/use-spotify-redirect-get.ts'
-import { useEffect } from 'react'
-import { Button, buttonVariants } from '@/components/ui/button.tsx'
-import { Check, UserRound, X } from 'lucide-react'
+import { AdminLayout } from "@/components/admin-layout.tsx";
+import { Link, useSearchParams } from "react-router";
+import { useSpotifyDisconnectPost } from "@/hooks/data/use-spotify-disconnect-post.ts";
+import { useSpotifyConnectPost } from "@/hooks/data/use-spotify-connect-post.ts";
+import { useSpotifyAccountGet } from "@/hooks/data/use-spotify-account-get.ts";
+import { useSpotifyRedirectGet } from "@/hooks/data/use-spotify-redirect-get.ts";
+import { useEffect } from "react";
+import { Button, buttonVariants } from "@/components/ui/button.tsx";
+import { Check, UserRound, X } from "lucide-react";
 import {
   Dialog,
   DialogClose,
@@ -15,33 +15,46 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog.tsx'
-import { Card, CardHeader } from '@/components/ui/card.tsx'
-import { Skeleton } from '@/components/ui/skeleton.tsx'
-import { Badge } from '@/components/ui/badge.tsx'
+} from "@/components/ui/dialog.tsx";
+import { Card, CardHeader } from "@/components/ui/card.tsx";
+import { Skeleton } from "@/components/ui/skeleton.tsx";
+import { Badge } from "@/components/ui/badge.tsx";
 
 const Spotify = () => {
-  const [ searchParams, setSearchParams ] = useSearchParams();
-  const authCode = searchParams.get('code')
+  const [searchParams, setSearchParams] = useSearchParams();
+  const authCode = searchParams.get("code");
 
-  const { mutate: disconnect } = useSpotifyDisconnectPost()
-  const { mutate: connect, isSuccess: isConnectSuccess, reset: resetConnectMutation } = useSpotifyConnectPost()
-  const { data: account, isFetching, isLoading, isError, isSuccess, refetch } = useSpotifyAccountGet()
-  const { data: redirect } = useSpotifyRedirectGet()
+  const { mutate: disconnect } = useSpotifyDisconnectPost();
+  const {
+    mutate: connect,
+    isSuccess: isConnectSuccess,
+    reset: resetConnectMutation,
+  } = useSpotifyConnectPost();
+  const {
+    data: account,
+    isFetching,
+    isLoading,
+    isError,
+    isSuccess,
+    refetch,
+  } = useSpotifyAccountGet();
+  const { data: redirect } = useSpotifyRedirectGet();
 
   useEffect(() => {
     if (authCode)
-      connect({ body: {
-          auth_code: searchParams.get('code') || ''
-        } })
-  }, [authCode])
+      connect({
+        body: {
+          auth_code: searchParams.get("code") || "",
+        },
+      });
+  }, [authCode]);
 
   const dismissAlert = () => {
-    resetConnectMutation()
-    refetch()
-    searchParams.delete('code')
-    setSearchParams()
-  }
+    resetConnectMutation();
+    refetch();
+    searchParams.delete("code");
+    setSearchParams();
+  };
 
   return (
     <AdminLayout
@@ -69,7 +82,7 @@ const Spotify = () => {
 
       <Card className="mb-4">
         <CardHeader>
-          {isLoading &&
+          {isLoading && (
             <div className="flex gap-3">
               <div className="flex-none flex h-20 w-20 items-center justify-center">
                 <Skeleton className="h-20 w-20 rounded-full" />
@@ -79,14 +92,20 @@ const Spotify = () => {
                 <Skeleton className="h-4 w-[200px]" />
               </div>
             </div>
-          }
-          {isSuccess &&
+          )}
+          {isSuccess && (
             <div className="flex gap-3">
               <div className="flex-none flex h-20 w-20 items-center justify-center rounded-full bg-gray-700">
-                <img className="rounded-full h-20 w-20" src={account?.profile_picture} alt="Profile picture" />
+                <img
+                  className="rounded-full h-20 w-20"
+                  src={account?.profile_picture}
+                  alt="Profile picture"
+                />
               </div>
               <div className="flex-grow self-center">
-                <h1 className="text-lg font-semibold">{account?.display_name}</h1>
+                <h1 className="text-lg font-semibold">
+                  {account?.display_name}
+                </h1>
                 <Badge variant="secondary" className="mt-2">
                   <Check className="mr-1 w-4 h-4" />
                   <p className="font-semibold">Connected</p>
@@ -98,8 +117,8 @@ const Spotify = () => {
                 </Button>
               </div>
             </div>
-          }
-          {isError &&
+          )}
+          {isError && (
             <div className="flex gap-3">
               <div className="flex-none flex h-20 w-20 items-center justify-center rounded-full bg-gray-700">
                 <UserRound />
@@ -113,17 +132,18 @@ const Spotify = () => {
               </div>
               <div className="flex-none">
                 <Link
-                  to={redirect?.redirect_url || '#'}
-                  className={buttonVariants()}>
+                  to={redirect?.redirect_url || "#"}
+                  className={buttonVariants()}
+                >
                   Connect
                 </Link>
               </div>
             </div>
-          }
+          )}
         </CardHeader>
       </Card>
     </AdminLayout>
-  )
-}
+  );
+};
 
-export default Spotify
+export default Spotify;

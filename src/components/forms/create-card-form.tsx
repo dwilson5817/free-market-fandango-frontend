@@ -1,11 +1,18 @@
-import { z } from "zod"
-import { useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useCardCreate } from '@/hooks/data/use-card-create.ts'
-import { Sheet, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet.tsx'
-import { Button } from '@/components/ui/button.tsx'
-import { Plus } from 'lucide-react'
+import { z } from "zod";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useCardCreate } from "@/hooks/data/use-card-create.ts";
+import {
+  Sheet,
+  SheetContent,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet.tsx";
+import { Button } from "@/components/ui/button.tsx";
+import { Plus } from "lucide-react";
 import {
   Form,
   FormControl,
@@ -14,43 +21,43 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form.tsx'
-import { Input } from '@/components/ui/input.tsx'
+} from "@/components/ui/form.tsx";
+import { Input } from "@/components/ui/input.tsx";
 
 const formSchema = z.object({
   card_number: z.number(),
   name: z
     .string()
-    .min(3, 'Too short')
-    .max(255, 'Name cannot be longer than 255'),
+    .min(3, "Too short")
+    .max(255, "Name cannot be longer than 255"),
   balance: z.number(),
-})
+});
 
 export function CreateCardForm() {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     defaultValues: {
       card_number: 0,
-      name: '',
-      balance: 0
+      name: "",
+      balance: 0,
     },
     resolver: zodResolver(formSchema),
-  })
-  const { isSubmitting } = form.formState
+  });
+  const { isSubmitting } = form.formState;
 
   const { mutate } = useCardCreate({
     onSuccess: () => {
-      setOpen(false)
+      setOpen(false);
 
-      form.reset()
-    }
-  })
+      form.reset();
+    },
+  });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     mutate({
       body: values,
-    })
+    });
   }
 
   return (
@@ -79,7 +86,7 @@ export function CreateCardForm() {
                         <Input
                           type="number"
                           {...field}
-                          {...form.register('card_number', {
+                          {...form.register("card_number", {
                             valueAsNumber: true,
                           })}
                         />
@@ -117,7 +124,7 @@ export function CreateCardForm() {
                         <Input
                           type="number"
                           {...field}
-                          {...form.register('balance', {
+                          {...form.register("balance", {
                             valueAsNumber: true,
                           })}
                         />
@@ -133,11 +140,13 @@ export function CreateCardForm() {
             </div>
 
             <SheetFooter>
-              <Button disabled={isSubmitting} type="submit">Save changes</Button>
+              <Button disabled={isSubmitting} type="submit">
+                Save changes
+              </Button>
             </SheetFooter>
           </form>
         </Form>
       </SheetContent>
     </Sheet>
-  )
+  );
 }

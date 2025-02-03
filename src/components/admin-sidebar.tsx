@@ -9,7 +9,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from '@/components/ui/sidebar'
+} from "@/components/ui/sidebar";
 import {
   ArrowLeft,
   Calendar,
@@ -18,50 +18,56 @@ import {
   Gauge,
   LogOut,
   Music,
-} from 'lucide-react'
-import { Link } from 'react-router'
-import LogoIcon from '@/assets/logo-icon.svg'
-import { useAuthentication } from '@/hooks/use-authentication.ts'
+  Settings,
+} from "lucide-react";
+import { Link } from "react-router";
+import LogoIcon from "@/assets/logo-icon.svg";
+import { useAuthentication } from "@/hooks/use-authentication.ts";
 
 const data = {
   mainNavigation: [
     {
-      title: 'Configuration',
+      title: "Configuration",
       items: [
         {
-          title: 'Dashboard',
-          url: '/admin',
+          title: "Dashboard",
+          url: "/admin",
           icon: Gauge,
         },
         {
-          title: 'Cards',
-          url: '/admin/cards',
+          title: "Cards",
+          url: "/admin/cards",
           icon: CreditCard,
         },
         {
-          title: 'Events',
-          url: '/admin/events',
+          title: "Events",
+          url: "/admin/events",
           icon: Calendar,
         },
         {
-          title: 'Stocks',
-          url: '/admin/stocks',
+          title: "Stocks",
+          url: "/admin/stocks",
           icon: CircleDollarSign,
         },
-      ]
+      ],
     },
     {
-      title: 'Advanced',
+      title: "Advanced",
       items: [
         {
-          title: 'Spotify',
-          url: '/admin/spotify',
+          title: "Parameters",
+          url: "/admin/parameters",
+          icon: Settings,
+        },
+        {
+          title: "Spotify",
+          url: "/admin/spotify",
           icon: Music,
         },
-      ]
-    }
+      ],
+    },
   ],
-}
+};
 
 export function AdminSidebar() {
   const { logout } = useAuthentication();
@@ -70,14 +76,8 @@ export function AdminSidebar() {
     <Sidebar variant="inset">
       <SidebarHeader>
         <div className="flex items-center gap-1 p-2">
-          <img
-            src={LogoIcon}
-            alt="Free Market Fandango logo"
-            className="w-6"
-          />
-          <span className="font-bold">
-            Admin
-          </span>
+          <img src={LogoIcon} alt="Free Market Fandango logo" className="w-6" />
+          <span className="font-bold">Admin</span>
         </div>
       </SidebarHeader>
       <SidebarContent>
@@ -86,7 +86,7 @@ export function AdminSidebar() {
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <Link to='/'>
+                  <Link to="/">
                     <ArrowLeft />
                     <span>Leave</span>
                   </Link>
@@ -132,5 +132,5 @@ export function AdminSidebar() {
         </SidebarGroup>
       </SidebarFooter>
     </Sidebar>
-  )
+  );
 }

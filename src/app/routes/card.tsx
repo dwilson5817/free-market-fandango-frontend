@@ -1,4 +1,4 @@
-import { NavigationBar } from '@/components/navigation-bar.tsx'
+import { NavigationBar } from "@/components/navigation-bar.tsx";
 
 const Card = () => {
   return (
@@ -6,7 +6,7 @@ const Card = () => {
       <NavigationBar />
       <p>Cards</p>
     </>
-  )
-}
+  );
+};
 
-export default Card
+export default Card;

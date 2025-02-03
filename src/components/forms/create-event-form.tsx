@@ -1,8 +1,8 @@
-import { z } from 'zod'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useState } from 'react'
-import { Plus } from 'lucide-react'
+import { z } from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
+import { Plus } from "lucide-react";
 import {
   Sheet,
   SheetContent,
@@ -10,8 +10,8 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from '@/components/ui/sheet'
-import { Input } from '@/components/ui/input.tsx'
+} from "@/components/ui/sheet";
+import { Input } from "@/components/ui/input.tsx";
 import {
   Form,
   FormControl,
@@ -20,19 +20,19 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form.tsx'
-import { Button } from '@/components/ui/button.tsx'
-import { Tag, TagInput } from 'emblor'
-import { useEventCreate } from '@/hooks/data/use-event-create.ts'
-import { Textarea } from '@/components/ui/textarea.tsx'
-import { Checkbox } from '@/components/ui/checkbox.tsx'
+} from "@/components/ui/form.tsx";
+import { Button } from "@/components/ui/button.tsx";
+import { Tag, TagInput } from "emblor";
+import { useEventCreate } from "@/hooks/data/use-event-create.ts";
+import { Textarea } from "@/components/ui/textarea.tsx";
+import { Checkbox } from "@/components/ui/checkbox.tsx";
 
 const formSchema = z
   .object({
-    title: z.string().min(1).default(''),
-    body: z.string().min(1).default(''),
+    title: z.string().min(1).default(""),
+    body: z.string().min(1).default(""),
     breaking: z.boolean().default(false),
-    video_url: z.union([z.literal(''), z.string().trim().url()]).default(''),
+    video_url: z.union([z.literal(""), z.string().trim().url()]).default(""),
     change_min: z.number(),
     change_max: z.number(),
     tags: z
@@ -40,45 +40,45 @@ const formSchema = z
         z.object({
           id: z.string(),
           text: z.string(),
-        })
+        }),
       )
       .default([]),
   })
   .refine((data) => !data.breaking || !!data.video_url, {
-    message: 'Required when breaking is selected',
-    path: ['video_url'],
-  })
+    message: "Required when breaking is selected",
+    path: ["video_url"],
+  });
 
 export function CreateEventForm() {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     defaultValues: {
-      title: '',
-      body: '',
+      title: "",
+      body: "",
       breaking: false,
-      video_url: '',
+      video_url: "",
       change_min: 0,
       change_max: 0,
       tags: [],
     },
     resolver: zodResolver(formSchema),
-  })
-  const { isSubmitting } = form.formState
+  });
+  const { isSubmitting } = form.formState;
 
   const { mutate } = useEventCreate({
     onSuccess: () => {
-      setOpen(false)
+      setOpen(false);
 
-      form.reset()
-    }
-  })
+      form.reset();
+    },
+  });
 
-  const { setValue, watch } = form
-  const isBreaking = watch('breaking')
+  const { setValue, watch } = form;
+  const isBreaking = watch("breaking");
 
-  const [activeTagIndex, setActiveTagIndex] = useState<number | null>(null)
-  const [tags, setTags] = useState<Tag[]>([])
+  const [activeTagIndex, setActiveTagIndex] = useState<number | null>(null);
+  const [tags, setTags] = useState<Tag[]>([]);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     mutate({
@@ -86,7 +86,7 @@ export function CreateEventForm() {
         ...values,
         tags: values.tags.flatMap(({ text }) => text),
       },
-    })
+    });
   }
 
   return (
@@ -185,7 +185,7 @@ export function CreateEventForm() {
                       <Input
                         type="number"
                         {...field}
-                        {...form.register('change_min', {
+                        {...form.register("change_min", {
                           valueAsNumber: true,
                         })}
                       />
@@ -208,7 +208,7 @@ export function CreateEventForm() {
                       <Input
                         type="number"
                         {...field}
-                        {...form.register('change_max', {
+                        {...form.register("change_max", {
                           valueAsNumber: true,
                         })}
                       />
@@ -233,13 +233,13 @@ export function CreateEventForm() {
                       {...field}
                       tags={tags}
                       setTags={(newTags) => {
-                        setTags(newTags)
-                        setValue('tags', newTags as [Tag, ...Tag[]])
+                        setTags(newTags);
+                        setValue("tags", newTags as [Tag, ...Tag[]]);
                       }}
                       activeTagIndex={activeTagIndex}
                       setActiveTagIndex={setActiveTagIndex}
                       inlineTags={false}
-                      inputFieldPosition={'top'}
+                      inputFieldPosition={"top"}
                     />
                   </FormControl>
                   <FormDescription>
@@ -252,11 +252,13 @@ export function CreateEventForm() {
             />
 
             <SheetFooter>
-              <Button disabled={isSubmitting} type="submit">Save changes</Button>
+              <Button disabled={isSubmitting} type="submit">
+                Save changes
+              </Button>
             </SheetFooter>
           </form>
         </Form>
       </SheetContent>
     </Sheet>
-  )
+  );
 }

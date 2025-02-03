@@ -1,10 +1,10 @@
-import { MouseEventHandler, PropsWithChildren } from 'react'
-import { Button } from '@/components/ui/button.tsx'
-import { RefreshCcw } from 'lucide-react'
+import { MouseEventHandler, PropsWithChildren } from "react";
+import { Button } from "@/components/ui/button.tsx";
+import { RefreshCcw } from "lucide-react";
 
 interface RefreshButtonProps {
-  onClick: MouseEventHandler<HTMLButtonElement>,
-  isFetching: boolean,
+  onClick: MouseEventHandler<HTMLButtonElement>;
+  isFetching: boolean;
 }
 
 export const RefreshButton = (props: PropsWithChildren<RefreshButtonProps>) => (
@@ -15,7 +15,6 @@ export const RefreshButton = (props: PropsWithChildren<RefreshButtonProps>) => (
     size="icon"
     className="my-auto ml-2"
   >
-    <RefreshCcw
-      className={`h-4 w-4 ${props.isFetching && 'animate-spin'}`} />
+    <RefreshCcw className={`h-4 w-4 ${props.isFetching && "animate-spin"}`} />
   </Button>
-)
+);

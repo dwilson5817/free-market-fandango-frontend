@@ -1,4 +1,4 @@
-import { NavigationBar } from '@/components/navigation-bar.tsx'
+import { NavigationBar } from "@/components/navigation-bar.tsx";
 
 const Help = () => {
   return (
@@ -6,7 +6,7 @@ const Help = () => {
       <NavigationBar />
       <p>Help</p>
     </>
-  )
-}
+  );
+};
 
-export default Help
+export default Help;
