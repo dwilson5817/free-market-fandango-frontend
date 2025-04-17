@@ -11,41 +11,19 @@ import {
   ChevronsUpDown,
   TriangleAlert,
 } from "lucide-react";
-import { Area, AreaChart, CartesianGrid, XAxis } from "recharts";
-import { ChartContainer } from "@/components/ui/chart";
-import { useMarketHistoryGet } from "@/hooks/data/use-market-history-get.ts";
-import { useEffect, useState } from "react";
 import Logo from "@/assets/logo-full.svg";
 import { BoardFooter } from "@/components/board-footer.tsx";
 import { BoardNews } from "@/components/board-news.tsx";
+import { StockChart } from "@/components/stock-chart.tsx";
 
 interface StockCardProps {
   stockCode: string;
 }
 
-const iso2601ToMillis = (iso2601?: string) => {
-  const date = new Date((iso2601 || "") + "Z");
-
-  return date.getTime();
-};
-
 const StockCard = (props: StockCardProps) => {
-  const [currentTime, setCurrentTime] = useState(Date.now());
   const { data: activeMarket } = useMarketActiveGet();
   const { data: stocks } = useStocksGet();
   const { data: marketPrices } = useMarketPricesGet(activeMarket?.uuid);
-  const { data: priceHistory } = useMarketHistoryGet(
-    props.stockCode,
-    activeMarket?.uuid,
-  );
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTime(Date.now());
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, []);
 
   const stock = stocks?.find((stock) => stock.code === props.stockCode);
   const marketPrice = marketPrices?.find(
@@ -78,27 +56,6 @@ const StockCard = (props: StockCardProps) => {
     maximumFractionDigits: 2,
   }).format(percentageChange);
 
-  const chartData = [
-    {
-      timestamp: iso2601ToMillis(activeMarket?.opened_at),
-      price: stock.initial_price,
-    },
-    ...(priceHistory?.map((price, index) => ({
-      timestamp: iso2601ToMillis(price.timestamp),
-      price: priceHistory[index + 1]?.previous_price || marketPrice.price,
-    })) || []),
-    { timestamp: currentTime, price: marketPrice.price },
-  ];
-
-  if (props.stockCode === "LAST") {
-    console.log(
-      chartData.map((item) => ({
-        ...item,
-        timestamp: new Date(item.timestamp).toISOString(),
-      })),
-    );
-  }
-
   return (
     <Card className="flex-0">
       <CardHeader>
@@ -116,51 +73,11 @@ const StockCard = (props: StockCardProps) => {
           </div>
         </div>
       </CardHeader>
-      <ChartContainer
-        config={{
-          price: {
-            label: "Price",
-            color: "hsl(var(--chart-1))",
-          },
-        }}
-      >
-        <AreaChart
-          accessibilityLayer
-          margin={{ top: 0, left: 0, right: 0, bottom: 0 }}
-          data={chartData}
-        >
-          <CartesianGrid vertical={false} />
-          <XAxis
-            dataKey="timestamp"
-            domain={["min", "max"]}
-            type="number"
-            interval="preserveEnd"
-            hide
-          />
-          <defs>
-            <linearGradient id="fillPrice" x1="0" y1="0" x2="0" y2="1">
-              <stop
-                offset="5%"
-                stopColor="var(--color-price)"
-                stopOpacity={0.8}
-              />
-              <stop
-                offset="95%"
-                stopColor="var(--color-price)"
-                stopOpacity={0.1}
-              />
-            </linearGradient>
-          </defs>
-          <Area
-            dataKey="price"
-            type="stepAfter"
-            fill="url(#fillPrice)"
-            fillOpacity={0.4}
-            stroke="var(--color-price)"
-            stackId="a"
-          />
-        </AreaChart>
-      </ChartContainer>
+      <StockChart
+        stockCode={props.stockCode}
+        initialStockPrice={stock.initial_price}
+        currentStockPrice={marketPrice.price}
+      />
     </Card>
   );
 };
