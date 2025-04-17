@@ -19,6 +19,7 @@ import {
   LogOut,
   Music,
   Settings,
+  ShoppingBasket,
 } from "lucide-react";
 import { Link } from "react-router";
 import LogoIcon from "@/assets/logo-icon.svg";
@@ -48,6 +49,16 @@ const data = {
           title: "Stocks",
           url: "/admin/stocks",
           icon: CircleDollarSign,
+        },
+      ],
+    },
+    {
+      title: "Purchase",
+      items: [
+        {
+          title: "View all purchases",
+          url: "/admin/purchase",
+          icon: ShoppingBasket,
         },
       ],
     },
