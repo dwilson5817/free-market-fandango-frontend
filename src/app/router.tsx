@@ -5,6 +5,7 @@ import Home from "@/app/routes/home.tsx";
 import Card from "@/app/routes/card.tsx";
 import Stocks from "@/app/routes/stocks.tsx";
 import Help from "@/app/routes/help.tsx";
+import Board from "@/app/routes/board.tsx";
 import Admin from "@/app/routes/admin";
 import AdminAuth from "@/app/routes/admin/auth.tsx";
 import AdminCards from "@/app/routes/admin/cards.tsx";
@@ -26,6 +27,7 @@ export const Router = () => {
           <Route path="card" element={<Card />} />
           <Route path="stocks" element={<Stocks />} />
           <Route path="help" element={<Help />} />
+          <Route path="board" element={<Board />} />
           <Route path="auth" element={<AdminAuth />} />
           <Route
             path="admin"

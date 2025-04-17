@@ -20,6 +20,7 @@ import {
   Music,
   Settings,
   ShoppingBasket,
+  Tv,
 } from "lucide-react";
 import { Link } from "react-router";
 import LogoIcon from "@/assets/logo-icon.svg";
@@ -83,6 +84,18 @@ const data = {
       ],
     },
   ],
+  footerNavigation: [
+    {
+      title: "Display",
+      url: "/admin",
+      icon: Tv,
+    },
+    {
+      title: "Logout",
+      url: "/admin/settings",
+      icon: LogOut,
+    },
+  ],
 };
 
 export function AdminSidebar() {
@@ -135,6 +148,14 @@ export function AdminSidebar() {
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild size="sm">
+                  <Link to="/board">
+                    <Tv />
+                    <span>Display</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild size="sm">
                   <a onClick={() => logout()}>
