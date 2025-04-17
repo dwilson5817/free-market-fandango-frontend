@@ -1,6 +1,6 @@
 import { useApi } from "@/hooks/use-api";
 import { useInvalidateSettingsGet } from "@/hooks/data/use-settings-get";
-import { paths } from "@/hooks/types/schema";
+import { paths } from "@/lib/schema";
 import { useApiResult } from "@/hooks/use-api-result";
 import type { FetchResponse, MaybeOptionalInit } from "openapi-fetch";
 import { UseMutationOptions } from "@tanstack/react-query";
@@ -37,6 +37,7 @@ export function useSettingsPut(options?: Options) {
       await options?.onError?.(error, variables, context);
 
       errorMessage({
+        // @ts-expect-error OpenAPI types currently are wrong, this should be valid, will need to modify OpenAPI spec
         description: error.message,
       });
     },
