@@ -30,7 +30,7 @@ const Cards = () => {
     {
       accessorKey: "balance",
       header: "Opening balance",
-      cell: ({ row }) => formatPrice(row.original.balance as number),
+      cell: ({ row }) => formatPrice(String(row.original.balance)),
     },
     {
       id: "actions",
