@@ -14,6 +14,7 @@ import AdminEvents from "@/app/routes/admin/events.tsx";
 import AdminSpotify from "@/app/routes/admin/spotify.tsx";
 import AdminParameters from "@/app/routes/admin/parameters.tsx";
 import AdminPurchaseList from "@/app/routes/admin/purchase-list.tsx";
+import AdminPurchaseCreate from "@/app/routes/admin/purchase-create.tsx";
 import { SidebarProvider } from "@/components/ui/sidebar.tsx";
 
 export const Router = () => {
@@ -44,6 +45,7 @@ export const Router = () => {
             <Route path="parameters" element={<AdminParameters />} />
             <Route path="purchase" element={<Outlet />}>
               <Route index element={<AdminPurchaseList />} />
+              <Route path="create" element={<AdminPurchaseCreate />} />
             </Route>
           </Route>
         </Routes>

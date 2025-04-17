@@ -56,6 +56,11 @@ const data = {
       title: "Purchase",
       items: [
         {
+          title: "Create purchase",
+          url: "/admin/purchase/create",
+          icon: Gauge,
+        },
+        {
           title: "View all purchases",
           url: "/admin/purchase",
           icon: ShoppingBasket,
