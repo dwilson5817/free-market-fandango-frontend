@@ -1,9 +1,9 @@
 import { useApi } from "@/hooks/use-api";
 import { useInvalidateSettingsGet } from "@/hooks/data/use-settings-get";
-import { paths } from "@/lib/schema";
 import { useApiResult } from "@/hooks/use-api-result";
 import type { FetchResponse, MaybeOptionalInit } from "openapi-fetch";
 import { UseMutationOptions } from "@tanstack/react-query";
+import { paths } from "@/hooks/types/schema";
 
 const METHOD = "put" as const;
 const PATH = "/settings" as const;
