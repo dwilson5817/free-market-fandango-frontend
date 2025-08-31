@@ -1,21 +1,2 @@
-# The Docker image that will be used to build your app
-image: node:lts
-
-pages:
-  stage: deploy
-  cache:
-    key:
-      files:
-        - package-lock.json
-      prefix: npm
-    paths:
-      - node_modules/
-  script:
-    - npm install
-    - npm run build
-    - cp -a dist/. public/
-  artifacts:
-    paths:
-      - public
-  rules:
-    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+include:
+  - component: $CI_SERVER_FQDN/infrastructure/react-deployment-base/react-gitlab-pages-deploy@1.0.0
