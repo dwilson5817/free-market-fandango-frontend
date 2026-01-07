@@ -34,7 +34,7 @@
     "cmdk": "^1.1.1",
     "emblor": "^1.4.7",
     "lucide-react": "^0.471.2",
-    "motion": "^12.7.4",
+    "motion": "^12.23.12",
     "openapi-fetch": "^0.13.4",
     "openapi-react-query": "^0.2.9",
     "react": "^18.3.1",
